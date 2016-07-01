@@ -42,7 +42,5 @@ namespace DigitalArchitecture.Controllers
         public IHttpActionResult Remove(int id) { return Ok(_articleService.Remove(id)); }
 
         protected readonly IArticleService _articleService;
-
-
     }
 }

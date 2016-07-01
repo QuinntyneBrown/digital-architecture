@@ -20,7 +20,19 @@ namespace DigitalArchitecture
             container.RegisterType<ICacheProvider, CacheProvider>();
             container.RegisterType<IEncryptionService, EncryptionService>();
             container.RegisterType<ILogger, Logger>();
+
+            container.RegisterType<IAppService, AppService>();
             container.RegisterType<IArticleService, ArticleService>();
+            container.RegisterType<IAuthorService, AuthorService>();
+            container.RegisterType<ICategoryService, CategoryService>();
+            container.RegisterType<IGalleryService, GalleryService>();
+            container.RegisterType<IPhotoService, PhotoService>();
+            container.RegisterType<IPropertyService, PropertyService>();
+            container.RegisterType<IRoleService, RoleService>();
+            container.RegisterType<ISectionService, SectionService>();
+            container.RegisterType<IUIService, UIService>();
+            container.RegisterType<IUserService, UserService>();
+
             container.RegisterInstance(AuthConfiguration.LazyConfig);            
             return container;
         }

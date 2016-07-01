@@ -1,3 +1,4 @@
+using DigitalArchitecture.Models;
 using System.Data.Entity;
 
 namespace DigitalArchitecture.Data
@@ -12,7 +13,13 @@ namespace DigitalArchitecture.Data
             Configuration.AutoDetectChangesEnabled = true;
         }
 
-        public DbSet<Models.Article> Articles { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<App> Apps { get; set; }
+        public DbSet<UI> UIs { get; set; }
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

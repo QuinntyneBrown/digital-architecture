@@ -1,3 +1,4 @@
+using DigitalArchitecture.Models;
 using System;
 
 namespace DigitalArchitecture.Data
@@ -25,9 +26,17 @@ namespace DigitalArchitecture.Data
             RepositoryProvider = repositoryProvider;
         }
 
-        public IRepository<Models.Article> Articles { get { return GetStandardRepo<Models.Article>(); } }
-        
-
+        public IRepository<Photo> Photos { get { return GetStandardRepo<Photo>(); } }
+        public IRepository<App> Apps { get { return GetStandardRepo<App>(); } }
+        public IRepository<Category> Categories { get { return GetStandardRepo<Category>(); } }
+        public IRepository<UI> UIs { get { return GetStandardRepo<UI>(); } }
+        public IRepository<Section> Sections { get { return GetStandardRepo<Section>(); } }
+        public IRepository<Property> Properties { get { return GetStandardRepo<Property>(); } }
+        public IRepository<Article> Articles { get { return GetStandardRepo<Article>(); } }
+        public IRepository<User> Users { get { return GetStandardRepo<User>(); } }
+        public IRepository<Role> Roles { get { return GetStandardRepo<Role>(); } }
+        public IRepository<Author> Authors { get { return GetStandardRepo<Author>(); } }
+        public IRepository<Gallery> Galleries { get { return GetStandardRepo<Gallery>(); } }
         protected void ConfigureDbContext(IDbContext dbContext)
         {
             dbContext.Configuration.ProxyCreationEnabled = false;
