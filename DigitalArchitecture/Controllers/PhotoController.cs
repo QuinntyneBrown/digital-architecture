@@ -111,13 +111,13 @@ namespace DigitalArchitecture.Controllers
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
             if (photo == null)
                 return result;
-            System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(photo.Bytes);
+            var memoryStream = new System.IO.MemoryStream(photo.Bytes);
             System.Drawing.Image fullsizeImage = FromStream(memoryStream);
             height = height.HasValue ? height : fullsizeImage.Height;
             var ratio = (float)height.Value / (float)fullsizeImage.Height;
             var width = fullsizeImage.Width * ratio;
             System.Drawing.Image newImage = fullsizeImage.GetThumbnailImage((int)width, height.Value, null, IntPtr.Zero);
-            System.IO.MemoryStream myResult = new System.IO.MemoryStream();
+            var myResult = new System.IO.MemoryStream();
             newImage.Save(myResult, fullsizeImage.RawFormat);
             result.Content = new ByteArrayContent(myResult.ToArray());
             result.Content.Headers.ContentType = new MediaTypeHeaderValue(photo.ContentType);

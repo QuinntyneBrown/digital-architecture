@@ -126,8 +126,8 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -198,6 +198,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="config\gulpfile.config.js" />
+    <Content Include="config\karma.conf.js" />
+    <Content Include="config\webpack.config.js" />
     <Content Include="gulpfile.js" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
@@ -208,6 +211,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="src\home\home-container.component.scss" />
+    <Content Include="src\home\home-container.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -223,87 +228,12 @@
       <Name>DigitalArchitecture</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="config\" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="src\core\action-creator.ts" />
-    <TypeScriptCompile Include="src\core\action-decorator.ts" />
-    <TypeScriptCompile Include="src\core\add-or-update.ts" />
-    <TypeScriptCompile Include="src\core\api-endpoint-provider.ts" />
-    <TypeScriptCompile Include="src\core\append-to-body-async.ts" />
-    <TypeScriptCompile Include="src\core\auth-interceptor.ts" />
-    <TypeScriptCompile Include="src\core\base-wrapped-exception.ts" />
-    <TypeScriptCompile Include="src\core\cache.decorator.ts" />
-    <TypeScriptCompile Include="src\core\change-detection-strategy.ts" />
-    <TypeScriptCompile Include="src\core\component-extension.ts" />
-    <TypeScriptCompile Include="src\core\component.decorators.ts" />
-    <TypeScriptCompile Include="src\core\convert-unix-timestamp-to-date.ts" />
-    <TypeScriptCompile Include="src\core\core.d.ts" />
-    <TypeScriptCompile Include="src\core\debounce.ts" />
-    <TypeScriptCompile Include="src\core\ends-with.ts" />
-    <TypeScriptCompile Include="src\core\exception-handler.ts" />
-    <TypeScriptCompile Include="src\core\extend-css-async.ts" />
-    <TypeScriptCompile Include="src\core\fetch.ts" />
-    <TypeScriptCompile Include="src\core\form-encode.ts" />
-    <TypeScriptCompile Include="src\core\function-info.ts" />
-    <TypeScriptCompile Include="src\core\get-action-type.ts" />
-    <TypeScriptCompile Include="src\core\get-from-url-sync.ts" />
-    <TypeScriptCompile Include="src\core\get-html.ts" />
-    <TypeScriptCompile Include="src\core\get-x.ts" />
-    <TypeScriptCompile Include="src\core\index.ts" />
-    <TypeScriptCompile Include="src\core\inject.ts" />
-    <TypeScriptCompile Include="src\core\injectable.ts" />
-    <TypeScriptCompile Include="src\core\invoke-async.ts" />
-    <TypeScriptCompile Include="src\core\is-between.ts" />
-    <TypeScriptCompile Include="src\core\local-storage-manager-provider.ts" />
-    <TypeScriptCompile Include="src\core\login-redirect-provider.ts" />
-    <TypeScriptCompile Include="src\core\pluck-out.ts" />
-    <TypeScriptCompile Include="src\core\pluck.ts" />
-    <TypeScriptCompile Include="src\core\point.d.ts" />
-    <TypeScriptCompile Include="src\core\popover-instance-options.d.ts" />
-    <TypeScriptCompile Include="src\core\popover-options.d.ts" />
-    <TypeScriptCompile Include="src\core\popover-scope.d.ts" />
-    <TypeScriptCompile Include="src\core\popover-trigger-scope.d.ts" />
-    <TypeScriptCompile Include="src\core\popover-vm.d.ts" />
-    <TypeScriptCompile Include="src\core\popover.d.ts" />
-    <TypeScriptCompile Include="src\core\position-detached-element-dto.ts" />
-    <TypeScriptCompile Include="src\core\position-detached-element-response-dto.d.ts" />
-    <TypeScriptCompile Include="src\core\position-detached-element.d.ts" />
-    <TypeScriptCompile Include="src\core\position.d.ts" />
-    <TypeScriptCompile Include="src\core\position.service.ts" />
-    <TypeScriptCompile Include="src\core\provide-action.ts" />
-    <TypeScriptCompile Include="src\core\provide-route-promise.ts" />
-    <TypeScriptCompile Include="src\core\provide.ts" />
-    <TypeScriptCompile Include="src\core\rect.d.ts" />
-    <TypeScriptCompile Include="src\core\rectangle-instance-options.d.ts" />
-    <TypeScriptCompile Include="src\core\rectangle.d.ts" />
-    <TypeScriptCompile Include="src\core\rectangle.service.ts" />
-    <TypeScriptCompile Include="src\core\remove-element.ts" />
-    <TypeScriptCompile Include="src\core\renderer.service.ts" />
-    <TypeScriptCompile Include="src\core\route-resolver.ts" />
-    <TypeScriptCompile Include="src\core\route-when-extension.ts" />
-    <TypeScriptCompile Include="src\core\ruler.d.ts" />
-    <TypeScriptCompile Include="src\core\ruler.service.ts" />
-    <TypeScriptCompile Include="src\core\safe-digest.ts" />
-    <TypeScriptCompile Include="src\core\service.decorator.ts" />
-    <TypeScriptCompile Include="src\core\service.ts" />
-    <TypeScriptCompile Include="src\core\set-element-dimension.ts" />
-    <TypeScriptCompile Include="src\core\set-element-dimensions.ts" />
-    <TypeScriptCompile Include="src\core\set-opacity-async.ts" />
-    <TypeScriptCompile Include="src\core\space.d.ts" />
-    <TypeScriptCompile Include="src\core\space.service.ts" />
-    <TypeScriptCompile Include="src\core\store.ts" />
-    <TypeScriptCompile Include="src\core\template-get-options.d.ts" />
-    <TypeScriptCompile Include="src\core\template.d.ts" />
-    <TypeScriptCompile Include="src\core\template.service.ts" />
-    <TypeScriptCompile Include="src\core\translate-x-async.ts" />
-    <TypeScriptCompile Include="src\core\translate-x-y.d.ts" />
-    <TypeScriptCompile Include="src\core\translate-x-y.ts" />
-    <TypeScriptCompile Include="src\core\translate-x.ts" />
-    <TypeScriptCompile Include="src\core\view-encapsulation.ts" />
     <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="ts\angular-rx-ui.d.ts" />
     <TypeScriptCompile Include="ts\rx.all.d.ts" />
+    <TypeScriptCompile Include="src\home\home-container.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
