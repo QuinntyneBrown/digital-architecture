@@ -211,8 +211,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="src\home\home-container.component.scss" />
-    <Content Include="src\home\home-container.component.html" />
+    <Content Include="src\app\home\home-container.component.scss" />
+    <Content Include="src\app\home\home-container.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -228,12 +228,15 @@
       <Name>DigitalArchitecture</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\app\articles\" />
+    <Folder Include="src\assets\scss\" />
+  </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="ts\angular-rx-ui.d.ts" />
     <TypeScriptCompile Include="ts\rx.all.d.ts" />
-    <TypeScriptCompile Include="src\home\home-container.component.ts" />
+    <TypeScriptCompile Include="src\app\home\home-container.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
