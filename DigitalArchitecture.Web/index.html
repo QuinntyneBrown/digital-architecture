@@ -6,10 +6,12 @@
 </head>
 <body data-ng-app="digitalArchitectureApp">
 
-    <home-container>
+    <da-header></da-header>
+    
+    <div data-ng-view></div>
 
-    </home-container>
-
+    <da-footer></da-footer>
+    
     <script src="lib/jquery.js"></script>
     <script src="lib/angular.js"></script>
     <script src="lib/angular-route.js"></script>    

@@ -204,6 +204,30 @@
     <Content Include="gulpfile.js" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
+    <Content Include="src\app\articles\article-detail-container.component.html">
+      <DependentUpon>article-detail-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\articles\article-detail-container.component.scss">
+      <DependentUpon>article-detail-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\home\home-container.component.html">
+      <DependentUpon>home-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\home\home-container.component.scss">
+      <DependentUpon>home-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\da-footer.component.html">
+      <DependentUpon>da-footer.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\da-footer.component.scss">
+      <DependentUpon>da-footer.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\da-header.component.html">
+      <DependentUpon>da-header.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\da-header.component.scss">
+      <DependentUpon>da-header.component.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -211,8 +235,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="src\app\home\home-container.component.scss" />
-    <Content Include="src\app\home\home-container.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -229,14 +251,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app\articles\" />
     <Folder Include="src\assets\scss\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\articles\article-detail-container.component.spec.ts">
+      <DependentUpon>article-detail-container.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\shared\da-footer.component.spec.ts">
+      <DependentUpon>da-footer.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\shared\da-header.component.spec.ts">
+      <DependentUpon>da-header.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="ts\angular-rx-ui.d.ts" />
     <TypeScriptCompile Include="ts\rx.all.d.ts" />
     <TypeScriptCompile Include="src\app\home\home-container.component.ts" />
+    <TypeScriptCompile Include="src\app\articles\article-detail-container.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\da-header.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\da-footer.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
