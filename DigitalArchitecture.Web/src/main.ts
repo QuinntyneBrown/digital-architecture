@@ -13,7 +13,11 @@ app.component(ArticleDetailContainerComponent);
 app.component(DaHeaderComponent);
 app.component(DaFooterComponent);
 
-app.config(["$routeProvider", ($routeProvider: angular.route.IRouteProvider) => {
+app.config(["$locationProvider","$routeProvider", ($locationProvider: angular.ILocationProvider,
+    $routeProvider: angular.route.IRouteProvider) => {
+
+    $locationProvider.html5Mode(true);
+
     $routeProvider
         .when("/", { template: "<home-container></home-container>" })
         .when("/article/:slug", { template: "<article-detail-container></article-detail-container>" });
