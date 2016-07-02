@@ -5,13 +5,17 @@ namespace DigitalArchitecture.Utilities
 {
     public class SeriLogger : DigitalArchitecture.Utilities.ILogger
     {
-        public SeriLogger()
+        private static volatile Serilog.ILogger _current = null;
+        public static Serilog.ILogger Current
         {
-            Serilog.ILogger logger = new LoggerConfiguration()
-                .WriteTo.Console()
-                .CreateLogger();
-
-            Log.Logger = logger;
+            get
+            {
+                if (_current == null)
+                    _current = new LoggerConfiguration()
+                        .WriteTo.RollingFile("logfile.txt", retainedFileCountLimit: 2)
+                        .CreateLogger();
+                return _current;
+            }
         }
 
         public void AddProvider(ILoggerProvider provider)
@@ -20,8 +24,6 @@ namespace DigitalArchitecture.Utilities
         }
 
         public void Information(string messageTemplate, params object[] propertyValues)
-        {
-            Log.Information(messageTemplate, propertyValues);
-        }
+            => SeriLogger.Current.Information(messageTemplate, propertyValues);
     }
 }

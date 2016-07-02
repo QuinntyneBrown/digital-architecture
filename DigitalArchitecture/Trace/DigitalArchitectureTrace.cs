@@ -7,7 +7,7 @@ using static DigitalArchitecture.Trace.TracingEvents;
 
 namespace DigitalArchitecture.Trace
 {
-    public static class SearchTrace
+    public static class DigitalArchitectureTrace
     {
         public static ILogger Diagnostics;
         public static ILogger Analytics;

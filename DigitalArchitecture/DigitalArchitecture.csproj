@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BA3A0650-A18B-4731-8EAA-F73868320EF7}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DigitalArchitecture</RootNamespace>
     <AssemblyName>DigitalArchitecture</AssemblyName>
@@ -141,6 +141,10 @@
       <HintPath>..\packages\SerilogMetrics.AddProperties.Fork.1.0.36\lib\net45\SerilogMetrics.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SerilogWeb.Classic, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9462ddd55fbc0e7f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SerilogWeb.Classic.2.0.9\lib\net45\SerilogWeb.Classic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
       <Private>True</Private>
@@ -225,7 +229,8 @@
     <Compile Include="Models\Tenant.cs" />
     <Compile Include="Models\UI.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Trace\SearchTrace.cs" />
+    <Compile Include="Trace\EventIdEnricher.cs" />
+    <Compile Include="Trace\DigitalArchitectureTrace.cs" />
     <Compile Include="Trace\TraceEvent.cs" />
     <Compile Include="Trace\TracingEvents.cs" />
     <Compile Include="UploadHandlers\FileMultipartFormDataStreamProvider.cs" />
