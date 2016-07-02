@@ -10,10 +10,10 @@ var WebpackConfig = (function () {
             module: {
                 loaders: [
                     {
-                        test: /\.ts$/, loader: "ts", exclude: [/node_modules/]
+                        test: /\.ts$/, loader: "ts"
                     },
                     {
-                        test: /\.css$/, exclude: [/node_modules/], loader: "style-loader!css-loader"
+                        test: /\.css$/, loader: "style-loader!css-loader"
                     },
                     {
                         test: /\.html$/, loader: "raw"

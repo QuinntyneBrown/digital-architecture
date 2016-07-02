@@ -20,12 +20,16 @@ namespace DigitalArchitecture.Controllers
         [Route("add")]
         [HttpPost]
         [ResponseType(typeof(AppAddOrUpdateResponseDto))]
-        public IHttpActionResult Add(AppAddOrUpdateRequestDto dto) { return Ok(_appService.AddOrUpdate(dto)); }
+        public IHttpActionResult Add(AppAddOrUpdateRequestDto dto) {
+            return Ok(_appService.AddOrUpdate(dto));
+        }
 
         [Route("update")]
         [HttpPut]
         [ResponseType(typeof(AppAddOrUpdateResponseDto))]
-        public IHttpActionResult Update(AppAddOrUpdateRequestDto dto) { return Ok(_appService.AddOrUpdate(dto)); }
+        public IHttpActionResult Update(AppAddOrUpdateRequestDto dto) {
+            return Ok(_appService.AddOrUpdate(dto));
+        }
 
         [Route("get")]
         [AllowAnonymous]
@@ -36,7 +40,7 @@ namespace DigitalArchitecture.Controllers
             {
                 try
                 {
-                    perf.AddProperties("Get");
+                    perf.AddProperties("AppController-Get");
                     return Ok(_appService.Get());
                 }
                 catch (Exception e)

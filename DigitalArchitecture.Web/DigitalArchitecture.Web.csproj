@@ -29,7 +29,7 @@
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
     <TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
-    <TypeScritModuleResolution>Classic</TypeScritModuleResolution>
+    <TypeScritModuleResolution>Node</TypeScritModuleResolution>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -266,6 +266,7 @@
     <Folder Include="src\assets\scss\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="node_modules\angular-rx-ui\lib\index.ts" />
     <TypeScriptCompile Include="src\app\articles\article-detail-container.component.spec.ts">
       <DependentUpon>article-detail-container.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -294,7 +295,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56622</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

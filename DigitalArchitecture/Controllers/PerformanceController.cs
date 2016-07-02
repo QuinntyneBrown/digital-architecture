@@ -1,7 +1,5 @@
-using DigitalArchitecture.Data;
 using System.Web.Http;
-using System.Linq;
-using DigitalArchitecture.Dtos;
+using DigitalArchitecture.Services;
 
 namespace DigitalArchitecture.Controllers
 {
@@ -9,9 +7,9 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/performance")]
     public class PerformanceController : ApiController
     {
-        public PerformanceController(IUow uow)
+        public PerformanceController(IPerformanceService performanceService)
         {
-            _repository = uow.Performance;
+            _performanceService = performanceService;
         }
 
         [AllowAnonymous]
@@ -19,9 +17,9 @@ namespace DigitalArchitecture.Controllers
         [Route("get")]
         public IHttpActionResult Get()
         {
-            return Ok(_repository.GetAll().ToList().Select(x=> new PerformanceDto(x)).ToList());
+            return Ok(_performanceService.Get());
         }
 
-        protected readonly IRepository<Models.Performance> _repository;
+        protected readonly IPerformanceService _performanceService;
     }
 }

@@ -352,6 +352,8 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ClientErrorController.cs" />
+    <Compile Include="Services\PerformanceService.cs" />
+    <Compile Include="Services\IPerformanceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
