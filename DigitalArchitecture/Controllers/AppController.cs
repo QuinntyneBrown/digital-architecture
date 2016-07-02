@@ -1,11 +1,8 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
 using DigitalArchitecture.Trace;
-using DigitalArchitecture.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -15,9 +12,8 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/app")]
     public class AppController : ApiController
     {
-        public AppController(IAppService appService, ILogger logger)
+        public AppController(IAppService appService)
         {
-            _logger = logger;
             _appService = appService;
         }
 
@@ -42,7 +38,6 @@ namespace DigitalArchitecture.Controllers
                 {
                     perf.AddProperties("Get");
                     return Ok(_appService.Get());
-
                 }
                 catch (Exception e)
                 {
@@ -50,8 +45,7 @@ namespace DigitalArchitecture.Controllers
                     DigitalArchitectureTrace.Diagnostics.Event(TracingEvents.ErrorInAppController, e.Message);
                     return InternalServerError(e);
                 }
-            }
-            
+            }            
         }
 
         [Route("getById")]
@@ -65,8 +59,5 @@ namespace DigitalArchitecture.Controllers
         public IHttpActionResult Remove(int id) { return Ok(_appService.Remove(id)); }
 
         protected readonly IAppService _appService;
-        protected readonly ILogger _logger;
-
-
     }
 }

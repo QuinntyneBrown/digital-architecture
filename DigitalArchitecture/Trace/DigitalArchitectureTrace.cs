@@ -24,7 +24,7 @@ namespace DigitalArchitecture.Trace
             => Performance
                 .BeginTimedOperation(
                     $"{caller}({operationInfo ?? string.Empty})",
-                    completedMessage: ClientError.Message,
+                    completedMessage: CompletedOperationTemplate.Message,
                     levelBeginning: LogEventLevel.Verbose,
                     levelCompleted: LogEventLevel.Information,
                     levelExceeds: LogEventLevel.Verbose);
