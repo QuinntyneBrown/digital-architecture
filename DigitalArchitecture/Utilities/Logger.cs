@@ -46,6 +46,11 @@ namespace DigitalArchitecture.Utilities
             }
             _loggers[logIndex] = logger;
         }
+
+        public void Information(string messageTemplate, params object[] propertyValues)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

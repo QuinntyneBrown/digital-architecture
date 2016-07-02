@@ -1,5 +1,6 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Utilities;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,8 +11,9 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/app")]
     public class AppController : ApiController
     {
-        public AppController(IAppService appService)
+        public AppController(IAppService appService, ILogger logger)
         {
+            _logger = logger;
             _appService = appService;
         }
 
@@ -29,7 +31,10 @@ namespace DigitalArchitecture.Controllers
         [AllowAnonymous]
         [HttpGet]
         [ResponseType(typeof(ICollection<AppDto>))]
-        public IHttpActionResult Get() { return Ok(_appService.Get()); }
+        public IHttpActionResult Get() {
+            _logger.Information("App Controller Get");
+            return Ok(_appService.Get());
+        }
 
         [Route("getById")]
         [HttpGet]
@@ -42,6 +47,7 @@ namespace DigitalArchitecture.Controllers
         public IHttpActionResult Remove(int id) { return Ok(_appService.Remove(id)); }
 
         protected readonly IAppService _appService;
+        protected readonly ILogger _logger;
 
 
     }

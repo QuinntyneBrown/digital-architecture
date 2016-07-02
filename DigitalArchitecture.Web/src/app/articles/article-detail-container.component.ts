@@ -3,6 +3,4 @@
     styles: [require("./article-detail-container.component.scss")],
     selector: "article-detail-container"
 })
-export class ArticleDetailContainerComponent {
-    constructor() { }
-}
+export class ArticleDetailContainerComponent { }

@@ -1,4 +1,6 @@
+using Microsoft.Practices.Unity;
 using Owin;
+using Serilog;
 using System.Web.Http;
 using Unity.WebApi;
 
@@ -9,9 +11,11 @@ namespace DigitalArchitecture
         public void Configuration(IAppBuilder app)
         {
             var config = new HttpConfiguration();
-            config.DependencyResolver = new UnityDependencyResolver(UnityConfiguration.GetContainer());
+            var container = UnityConfiguration.GetContainer();
+            config.DependencyResolver = new UnityDependencyResolver(container);
             ApiConfiguration.Install(config, app);
             app.UseWebApi(config);
         }
+        
     }
 }

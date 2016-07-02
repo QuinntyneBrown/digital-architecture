@@ -231,6 +231,7 @@
     <Compile Include="UploadHandlers\FileMultipartFormDataStreamProvider.cs" />
     <Compile Include="UploadHandlers\InMemoryMultipartFormDataStreamProvider.cs" />
     <Compile Include="UploadHandlers\StreamHelper.cs" />
+    <Compile Include="Utilities\SeriLogger.cs" />
     <Compile Include="WebApiUnityActionFilterProvider.cs" />
     <Compile Include="Authentication\JwtOptions.cs" />
     <Compile Include="Authentication\JwtWriterFormat.cs" />

@@ -32,8 +32,10 @@ namespace DigitalArchitecture
             container.RegisterType<ISectionService, SectionService>();
             container.RegisterType<IUIService, UIService>();
             container.RegisterType<IUserService, UserService>();
+            container.RegisterType<ILogger, SeriLogger>();
 
-            container.RegisterInstance(AuthConfiguration.LazyConfig);            
+            container.RegisterInstance(AuthConfiguration.LazyConfig);
+                      
             return container;
         }
     }
