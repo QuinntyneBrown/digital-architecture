@@ -1,3 +1,8 @@
+using DigitalArchitecture.Models;
+using DigitalArchitecture.Trace;
+using System;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace DigitalArchitecture.Controllers
@@ -8,6 +13,14 @@ namespace DigitalArchitecture.Controllers
     {
         public ClientErrorController()
         {
+        }
+
+        [Authorize]
+        [HttpPost]
+        public HttpResponseMessage ReportClientError(ClientError clientError)
+        {
+            DigitalArchitectureTrace.Diagnostics.Error(new Exception(clientError.Message), TracingEvents.ClientError.Message, clientError.Message, clientError.StackTrace);
+            return Request.CreateResponse(HttpStatusCode.Accepted);
         }
     }
 }

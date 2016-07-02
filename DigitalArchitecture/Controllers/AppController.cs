@@ -1,7 +1,11 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Trace;
 using DigitalArchitecture.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -32,8 +36,22 @@ namespace DigitalArchitecture.Controllers
         [HttpGet]
         [ResponseType(typeof(ICollection<AppDto>))]
         public IHttpActionResult Get() {
-            _logger.Information("App Controller Get");
-            return Ok(_appService.Get());
+            using (var perf = DigitalArchitectureTrace.BeginTimedOperation())
+            {
+                try
+                {
+                    perf.AddProperties("Get");
+                    return Ok(_appService.Get());
+
+                }
+                catch (Exception e)
+                {
+                    perf.AddProperties("Error");
+                    DigitalArchitectureTrace.Diagnostics.Event(TracingEvents.ErrorInAppController, e.Message);
+                    return InternalServerError(e);
+                }
+            }
+            
         }
 
         [Route("getById")]
