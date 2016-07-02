@@ -19,7 +19,7 @@ namespace DigitalArchitecture.Controllers
         [HttpPost]
         public HttpResponseMessage ReportClientError(ClientError clientError)
         {
-            DigitalArchitectureTrace.Diagnostics.Error(new Exception(clientError.Message), TracingEvents.ClientError.Message, clientError.Message, clientError.StackTrace);
+            TraceService.Diagnostics.Error(new Exception(clientError.Message), TracingEvents.ClientError.Message, clientError.Message, clientError.StackTrace);
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
     }

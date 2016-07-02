@@ -32,7 +32,7 @@ namespace DigitalArchitecture.Controllers
         [HttpGet]
         [ResponseType(typeof(ICollection<AppDto>))]
         public IHttpActionResult Get() {
-            using (var perf = DigitalArchitectureTrace.BeginTimedOperation())
+            using (var perf = TraceService.BeginTimedOperation())
             {
                 try
                 {
@@ -42,7 +42,7 @@ namespace DigitalArchitecture.Controllers
                 catch (Exception e)
                 {
                     perf.AddProperties("Error");
-                    DigitalArchitectureTrace.Diagnostics.Event(TracingEvents.ErrorInAppController, e.Message);
+                    TraceService.Diagnostics.Event(TracingEvents.ErrorInAppController, e.Message);
                     return InternalServerError(e);
                 }
             }            

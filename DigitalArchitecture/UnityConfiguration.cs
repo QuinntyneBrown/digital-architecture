@@ -33,7 +33,7 @@ namespace DigitalArchitecture
             container.RegisterType<IUIService, UIService>();
             container.RegisterType<IUserService, UserService>();
             container.RegisterType<ILogger, SeriLogger>();
-
+            container.RegisterInstance(TraceConfiguration.LazyConfig);
             container.RegisterInstance(AuthConfiguration.LazyConfig);
                       
             return container;

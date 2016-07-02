@@ -14,7 +14,8 @@ namespace DigitalArchitecture.Migrations
 
         protected override void Seed(DigitalArchitecture.Data.DataContext context)
         {
-
+            context.Database.Delete();
+            context.Database.Create();
         }
     }
 }

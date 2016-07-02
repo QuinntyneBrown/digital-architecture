@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BA3A0650-A18B-4731-8EAA-F73868320EF7}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DigitalArchitecture</RootNamespace>
     <AssemblyName>DigitalArchitecture</AssemblyName>
@@ -213,7 +213,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiConfiguration.cs" />
+    <Compile Include="Configuration\ITraceConfiguration.cs" />
+    <Compile Include="Configuration\TraceConfiguration.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\PerformanceController.cs" />
+    <Compile Include="Dtos\PerformanceDto.cs" />
     <Compile Include="Dtos\PhotoUploadResponseDto.cs" />
     <Compile Include="Models\App.cs" />
     <Compile Include="Models\AppProperty.cs" />
@@ -221,6 +225,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ClientError.cs" />
     <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\Performance.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Property.cs" />
     <Compile Include="Models\PropertyType.cs" />
@@ -230,7 +235,7 @@
     <Compile Include="Models\UI.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Trace\EventIdEnricher.cs" />
-    <Compile Include="Trace\DigitalArchitectureTrace.cs" />
+    <Compile Include="Trace\TraceService.cs" />
     <Compile Include="Trace\TraceEvent.cs" />
     <Compile Include="Trace\TracingEvents.cs" />
     <Compile Include="UploadHandlers\FileMultipartFormDataStreamProvider.cs" />
@@ -352,7 +357,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="database.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

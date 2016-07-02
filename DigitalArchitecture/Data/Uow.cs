@@ -37,6 +37,8 @@ namespace DigitalArchitecture.Data
         public IRepository<Role> Roles { get { return GetStandardRepo<Role>(); } }
         public IRepository<Author> Authors { get { return GetStandardRepo<Author>(); } }
         public IRepository<Gallery> Galleries { get { return GetStandardRepo<Gallery>(); } }
+        public IRepository<Performance> Performance { get { return GetStandardRepo<Performance>(); } }
+
         protected void ConfigureDbContext(IDbContext dbContext)
         {
             dbContext.Configuration.ProxyCreationEnabled = false;
