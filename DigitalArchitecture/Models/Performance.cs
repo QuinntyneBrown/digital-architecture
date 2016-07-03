@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DigitalArchitecture.Models
@@ -6,10 +7,12 @@ namespace DigitalArchitecture.Models
     [Table("Performance")]
     public class Performance
     {
+        [Required]
         public int Id { get; set; }
         public int EventId { get; set; }
         public string Message { get; set; }
         public string MessageTemplate { get; set; }
+        [MaxLength(128)]
         public string Level { get; set; }
         public DateTimeOffset? Timestamp { get; set; }
         [Column(TypeName="datetime2")]
