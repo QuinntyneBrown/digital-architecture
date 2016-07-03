@@ -14,6 +14,8 @@ namespace DigitalArchitecture.Data
         }
 
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<App> Apps { get; set; }
         public DbSet<UI> UIs { get; set; }
         public DbSet<Section> Sections { get; set; }
@@ -21,6 +23,7 @@ namespace DigitalArchitecture.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Performance> Performance { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

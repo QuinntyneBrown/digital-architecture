@@ -361,6 +361,11 @@
     <Compile Include="Controllers\ClientErrorController.cs" />
     <Compile Include="Services\PerformanceService.cs" />
     <Compile Include="Services\IPerformanceService.cs" />
+    <Compile Include="Dtos\TagDto.cs" />
+    <Compile Include="Dtos\TagAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\TagAddOrUpdateResponseDto.cs" />
+    <Compile Include="Services\TagService.cs" />
+    <Compile Include="Services\ITagService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

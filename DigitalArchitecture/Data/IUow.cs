@@ -16,6 +16,7 @@ namespace DigitalArchitecture.Data
         IRepository<Author> Authors { get; }
         IRepository<Photo> Photos { get; }
         IRepository<Performance> Performance { get; }
+        IRepository<Tag> Tags { get; }
         void SaveChanges();
     }
 }

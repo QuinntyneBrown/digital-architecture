@@ -38,6 +38,7 @@ namespace DigitalArchitecture.Data
         public IRepository<Author> Authors { get { return GetStandardRepo<Author>(); } }
         public IRepository<Gallery> Galleries { get { return GetStandardRepo<Gallery>(); } }
         public IRepository<Performance> Performance { get { return GetStandardRepo<Performance>(); } }
+        public IRepository<Tag> Tags { get { return GetStandardRepo<Tag>(); } }
 
         protected void ConfigureDbContext(IDbContext dbContext)
         {

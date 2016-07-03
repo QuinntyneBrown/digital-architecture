@@ -1,5 +1,4 @@
 ﻿/// <reference path="../ts/rx.all.d.ts" />
-/// <reference path="../ts/angular-rx-ui.d.ts" />
 
 import { HomeContainerComponent } from "./app/home/home-container.component";
 import { ArticleDetailContainerComponent } from "./app/articles/article-detail-container.component";
@@ -16,11 +15,8 @@ app.component(AppHeaderComponent);
 app.component(AppFooterComponent);
 app.component(AdminHeaderComponent);
 
-app.config(["$locationProvider","$routeProvider", ($locationProvider: angular.ILocationProvider,
-    $routeProvider: angular.route.IRouteProvider) => {
-
-    $locationProvider.html5Mode(true);
-
+app.config(["$routeProvider", ($routeProvider: angular.route.IRouteProvider) => {
+    
     $routeProvider
         .when("/", { template: "<home-container></home-container>" })
         .when("/article/:slug", { template: "<article-detail-container></article-detail-container>" });
@@ -30,7 +26,23 @@ app.config(["$locationProvider","$routeProvider", ($locationProvider: angular.IL
         .when("/admin", {
             authorizationRequired: true,
             template: "<article-editor-container></article-editor-container>"
-        });
+        })
+        .when("/admin/articles", {
+            authorizationRequired: true,
+            template: "<article-editor-container></author-editor-container>"
+        })
+        .when("/admin/authors", {
+            authorizationRequired: true,
+            template: "<author-editor-container></author-editor-container>"
+        })
+        .when("/admin/categories", {
+            authorizationRequired: true,
+            template: "<category-editor-container></category-editor-container>"
+        })
+        .when("/admin/tags", {
+            authorizationRequired: true,
+            template: "<tag-editor-container></tag-editor-container>"
+        })
 }]);
 
 provideRoutePromise(app, {

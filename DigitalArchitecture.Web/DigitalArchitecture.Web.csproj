@@ -266,7 +266,6 @@
       <DependentUpon>article-detail-container.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="ts\angular-rx-ui.d.ts" />
     <TypeScriptCompile Include="ts\rx.all.d.ts" />
     <TypeScriptCompile Include="src\app\home\home-container.component.ts" />
     <TypeScriptCompile Include="src\app\articles\article-detail-container.component.ts" />
