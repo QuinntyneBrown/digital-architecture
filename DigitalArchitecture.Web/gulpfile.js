@@ -77,6 +77,8 @@ gulp.task('run-unit-tests', ['compile-ts-tests'], function () {
         './lib/angular-route.js',
         './lib/angular-sanitize.js',
         './lib/angular-touch.js',
+        './bower_components/tinymce-dist/tinymce.js',
+        './bower_components/angular-ui-tinymce/src/tinymce.js',
         './lib/angular-rx-ui.js',
         './node_modules/angular-mocks/angular-mocks.js',
         './dist/app.js',

@@ -41,6 +41,27 @@ namespace DigitalArchitecture.Controllers
         [ResponseType(typeof(int))]
         public IHttpActionResult Remove(int id) { return Ok(_userService.Remove(id)); }
 
+        [HttpPost]
+        [Route("register")]
+        [AllowAnonymous]
+        public IHttpActionResult Register(RegistrationRequestDto request)
+        {
+            return Ok(_userService.Register(request));
+        }
+
+        [HttpGet]
+        [Route("current")]
+        [AllowAnonymous]
+        [ResponseType(typeof(CurrentUserResponseDto))]
+        public IHttpActionResult Current()
+        {
+
+            if (!User.Identity.IsAuthenticated)
+                return Ok();
+
+            return Ok(_userService.Current(User.Identity.Name));
+        }
+
         protected readonly IUserService _userService;
 
 

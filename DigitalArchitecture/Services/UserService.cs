@@ -10,35 +10,62 @@ namespace DigitalArchitecture.Services
 {
     public class UserService : IUserService
     {
-        public UserService(IUow uow, ICacheProvider cacheProvider)
+        public UserService(ICacheProvider cacheProvider, IUow uow, IEncryptionService encryptionService)
         {
-            this.uow = uow;
-            this.repository = uow.Users;
-            this.cache = cacheProvider.GetCache();
+            _uow = uow;
+            _encryptionService = encryptionService;
+            _cache = cacheProvider.GetCache();
+
+            
         }
+
+        public RegistrationResponseDto Register(RegistrationRequestDto request)
+        {
+            if (_uow.Users.GetAll().Where(x => x.Username == request.EmailAddress).FirstOrDefault() == null)
+            {
+                User user = new User()
+                {
+                    Firstname = request.Firstname,
+                    Lastname = request.Lastname,
+                    Email = request.EmailAddress,
+                    Username = request.EmailAddress,
+                    Password = _encryptionService.TransformPassword(request.Password)
+                };
+                _uow.Users.Add(user);
+                _uow.SaveChanges();
+            }
+
+            return new RegistrationResponseDto();
+        }
+
+        public CurrentUserResponseDto Current(string username)
+            => new CurrentUserResponseDto(_uow.Users
+                .GetAll()
+                .Where(x => x.IsDeleted == false)
+                .Single(x => x.Username == username));
 
         public UserAddOrUpdateResponseDto AddOrUpdate(UserAddOrUpdateRequestDto request)
         {
-            var entity = repository.GetAll()
+            var entity = _repository.GetAll()
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
-            if (entity == null) repository.Add(entity = new User());
+            if (entity == null) _repository.Add(entity = new User());
             entity.Name = request.Name;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return new UserAddOrUpdateResponseDto(entity);
         }
 
         public dynamic Remove(int id)
         {
-            var entity = repository.GetById(id);
+            var entity = _repository.GetById(id);
             entity.IsDeleted = true;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return id;
         }
 
         public ICollection<UserDto> Get()
         {
             ICollection<UserDto> response = new HashSet<UserDto>();
-            var entities = repository.GetAll().Where(x => x.IsDeleted == false).ToList();
+            var entities = _repository.GetAll().Where(x => x.IsDeleted == false).ToList();
             foreach(var entity in entities) { response.Add(new UserDto(entity)); }    
             return response;
         }
@@ -46,11 +73,12 @@ namespace DigitalArchitecture.Services
 
         public UserDto GetById(int id)
         {
-            return new UserDto(repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
+            return new UserDto(_repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
 
-        protected readonly IUow uow;
-        protected readonly IRepository<User> repository;
-        protected readonly ICache cache;
+        protected readonly IUow _uow;
+        protected readonly IRepository<User> _repository;
+        protected readonly ICache _cache;
+        protected readonly IEncryptionService _encryptionService;
     }
 }

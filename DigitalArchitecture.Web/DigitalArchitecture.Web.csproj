@@ -198,6 +198,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bower.json" />
     <Content Include="config\gulpfile.config.js" />
     <Content Include="config\karma.conf.js" />
     <Content Include="config\webpack.config.js" />
@@ -209,12 +210,6 @@
     </Content>
     <Content Include="src\app\articles\article-detail-container.component.scss">
       <DependentUpon>article-detail-container.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\articles\article-editor-container.component.html">
-      <DependentUpon>article-editor-container.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\articles\article-editor-container.component.scss">
-      <DependentUpon>article-editor-container.component.ts</DependentUpon>
     </Content>
     <Content Include="src\app\home\home-container.component.html">
       <DependentUpon>home-container.component.ts</DependentUpon>
@@ -278,7 +273,6 @@
     <TypeScriptCompile Include="src\app\shared\app-header.component.ts" />
     <TypeScriptCompile Include="src\app\shared\app-footer.component.ts" />
     <TypeScriptCompile Include="src\app\shared\admin-header.component.ts" />
-    <TypeScriptCompile Include="src\app\articles\article-editor-container.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

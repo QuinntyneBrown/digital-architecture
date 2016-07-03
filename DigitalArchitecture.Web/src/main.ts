@@ -6,7 +6,7 @@ import { ArticleDetailContainerComponent } from "./app/articles/article-detail-c
 import { AppHeaderComponent } from "./app/shared/app-header.component";
 import { AppFooterComponent } from "./app/shared/app-footer.component";
 import { AdminHeaderComponent } from "./app/shared/admin-header.component";
-import { provide } from "angular-rx-ui/src/components/core";
+import { provide, provideRoutePromise } from "angular-rx-ui/src/components/core";
 
 var app = angular.module("digitalArchitectureApp", ["components"]) as any;
 
@@ -33,30 +33,30 @@ app.config(["$locationProvider","$routeProvider", ($locationProvider: angular.IL
         });
 }]);
 
-//ngRxUI.core.provideRoutePromise(app, {
-//    route: "*",
-//    promise: ["loginRedirect", "$q", "$route", "invokeAsync", "store", "userActionCreator", (loginRedirect, $q: angular.IQService, $route, invokeAsync, store: any, userActionCreator: any) => {
-//        var deferred = $q.defer();
-//        invokeAsync(userActionCreator.current).then(results => {
-//            if ($route.current.$$route.authorizationRequired && !(store.getValue() as any).currentUser) {
-//                loginRedirect.redirectToLogin();
-//                deferred.reject()
-//            } else {
-//                deferred.resolve();
-//            }
-//        });
-//        return deferred.promise;
-//    }],
-//    priority: -999
-//});
+provideRoutePromise(app, {
+    route: "*",
+    promise: ["loginRedirect", "$q", "$route", "invokeAsync", "store", "userActionCreator", (loginRedirect, $q: angular.IQService, $route, invokeAsync, store: any, userActionCreator: any) => {
+        var deferred = $q.defer();
+        invokeAsync(userActionCreator.current).then(results => {
+            if ($route.current.$$route.authorizationRequired && !(store.getValue() as any).currentUser) {
+                loginRedirect.redirectToLogin();
+                deferred.reject()
+            } else {
+                deferred.resolve();
+            }
+        });
+        return deferred.promise;
+    }],
+    priority: -999
+});
 
-//app.config(["apiEndpointProvider", (apiEndpointProvider) => {
-//    apiEndpointProvider.configure("api");
-//}]);
+app.config(["apiEndpointProvider", (apiEndpointProvider) => {
+    apiEndpointProvider.configure("api");
+}]);
 
-//app.config(["loginRedirectProvider", (loginRedirectProvider) => {
-//    loginRedirectProvider.setDefaultUrl("/");
-//}]);
+app.config(["loginRedirectProvider", (loginRedirectProvider) => {
+    loginRedirectProvider.setDefaultUrl("/");
+}]);
 
 app.config(["$locationProvider", ($locationProvider: angular.ILocationProvider) => {
     $locationProvider.html5Mode(true);

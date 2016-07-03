@@ -1,5 +1,6 @@
 namespace DigitalArchitecture.Migrations
 {
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,8 +15,18 @@ namespace DigitalArchitecture.Migrations
 
         protected override void Seed(DigitalArchitecture.Data.DataContext context)
         {
-            context.Database.Delete();
-            context.Database.Create();
+            if (context.Users.FirstOrDefault(x => x.Username == "quinntyne@hotmail.com") == null)
+            {
+                var user = new User()
+                {
+                    Username = "quinntyne@hotmail.com",
+                    Firstname = "Quinntyne",
+                    Lastname = "Brown",
+                    Password = "XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=",
+                };
+                context.Users.AddOrUpdate(user);
+                context.SaveChanges();
+            }
         }
     }
 }

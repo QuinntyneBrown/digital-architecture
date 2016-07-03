@@ -217,6 +217,7 @@
     <Compile Include="Configuration\TraceConfiguration.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\PerformanceController.cs" />
+    <Compile Include="Dtos\CurrentUserResponseDto.cs" />
     <Compile Include="Dtos\PerformanceDto.cs" />
     <Compile Include="Dtos\PhotoUploadResponseDto.cs" />
     <Compile Include="Models\App.cs" />

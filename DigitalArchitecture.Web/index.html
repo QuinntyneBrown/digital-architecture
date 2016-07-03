@@ -7,12 +7,22 @@
 </head>
 <body data-ng-app="digitalArchitectureApp">
 
-    <app-header></app-header>
-    
-    <div data-ng-view></div>
+    <div data-ng-if="!isAdmin">
+        <app-header></app-header>    
+        <div data-ng-view></div>
+        <app-footer></app-footer>
+    </div>
 
-    <app-footer></app-footer>
-    
+    <div data-ng-if="isAdmin" class="admin-app">
+        <admin-header></admin-header>
+        <div>
+            <div></div>
+            <div data-ng-view></div>
+        </div>
+        
+    </div>
+
+    <script src="../../../../bower_components/tinymce-dist/tinymce.js"></script>
     <script src="lib/jquery.js"></script>
     <script src="lib/angular.js"></script>
     <script src="lib/angular-route.js"></script>    
@@ -21,6 +31,7 @@
     <script src="lib/fastclick.js"></script>    
     <script src="lib/moment.js"></script>
     <script src="lib/rx.all.compat.js"></script>
+    <script src="../../../../bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <script src="lib/angular-rx-ui.js"></script>
     <script src="dist/app.js"></script>
 
