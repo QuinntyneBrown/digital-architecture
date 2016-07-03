@@ -1,4 +1,7 @@
-﻿namespace DigitalArchitecture.Models
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace DigitalArchitecture.Models
 {
     public class Author
     {
@@ -9,5 +12,6 @@
         public bool IsDeleted { get; set; }
         public int? PhotoId { get; set; }
         public Photo Photo { get; set; }
+        public ICollection<Article> Articles { get; set; } = new HashSet<Article>();
     }
 }
