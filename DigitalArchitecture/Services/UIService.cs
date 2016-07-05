@@ -43,7 +43,6 @@ namespace DigitalArchitecture.Services
             return response;
         }
 
-
         public UIDto GetById(int id)
         {
             return new UIDto(_repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());

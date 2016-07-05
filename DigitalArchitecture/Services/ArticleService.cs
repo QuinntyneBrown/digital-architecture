@@ -4,6 +4,7 @@ using DigitalArchitecture.Data;
 using System.Linq;
 using System.Data.Entity;
 using DigitalArchitecture.Models;
+using static System.DateTime;
 
 namespace DigitalArchitecture.Services
 {
@@ -22,6 +23,37 @@ namespace DigitalArchitecture.Services
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
             if (entity == null) _repository.Add(entity = new Models.Article());
             entity.Name = request.Name;
+            entity.AuthorId = request.AuthorId;
+            entity.Excerpt = request.Excerpt;
+            entity.ArticleBody = request.ArticleBody;
+            entity.Headline = request.Headline;
+            entity.AlternativeHeadline = request.AlternativeHeadline;
+            entity.Url = request.Url;
+
+            entity.Images.Clear();
+
+            foreach(var image in request.Image)
+            {
+
+            }
+
+            entity.Tags.Clear();
+
+            foreach (var tag in request.Tags)
+            {
+
+            }
+
+            entity.Categories.Clear();
+
+            foreach(var category in request.Categories)
+            {
+
+            }
+
+            entity.DateModified = Now;
+            entity.DatePublished = request.DatePublished;
+            entity.Author = request.Author != null ? _uow.Authors.GetById(request.Author.Id) : null;
             _uow.SaveChanges();
             return new ArticleAddOrUpdateResponseDto(entity);
         }
