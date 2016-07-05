@@ -54,7 +54,9 @@ namespace DigitalArchitecture.Services
             entity.DateModified = Now;
             entity.DatePublished = request.DatePublished;
             entity.Author = request.Author != null ? _uow.Authors.GetById(request.Author.Id) : null;
+
             _uow.SaveChanges();
+
             return new ArticleAddOrUpdateResponseDto(entity);
         }
 
