@@ -13,15 +13,15 @@ namespace DigitalArchitecture.Services
         public GalleryService(IUow uow, ICacheProvider cacheProvider)
         {
             this.uow = uow;
-            this.repository = uow.Galleries;
+            this._repository = uow.Galleries;
             this.cache = cacheProvider.GetCache();
         }
 
         public GalleryAddOrUpdateResponseDto AddOrUpdate(GalleryAddOrUpdateRequestDto request)
         {
-            var entity = repository.GetAll()
+            var entity = _repository.GetAll()
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
-            if (entity == null) repository.Add(entity = new Gallery());
+            if (entity == null) _repository.Add(entity = new Gallery());
             entity.Name = request.Name;
             uow.SaveChanges();
             return new GalleryAddOrUpdateResponseDto(entity);
@@ -29,7 +29,7 @@ namespace DigitalArchitecture.Services
 
         public dynamic Remove(int id)
         {
-            var entity = repository.GetById(id);
+            var entity = _repository.GetById(id);
             entity.IsDeleted = true;
             uow.SaveChanges();
             return id;
@@ -38,7 +38,7 @@ namespace DigitalArchitecture.Services
         public ICollection<GalleryDto> Get()
         {
             ICollection<GalleryDto> response = new HashSet<GalleryDto>();
-            var entities = repository.GetAll().Where(x => x.IsDeleted == false).ToList();
+            var entities = _repository.GetAll().Where(x => x.IsDeleted == false).ToList();
             foreach(var entity in entities) { response.Add(new GalleryDto(entity)); }    
             return response;
         }
@@ -46,11 +46,11 @@ namespace DigitalArchitecture.Services
 
         public GalleryDto GetById(int id)
         {
-            return new GalleryDto(repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
+            return new GalleryDto(_repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
 
         protected readonly IUow uow;
-        protected readonly IRepository<Gallery> repository;
+        protected readonly IRepository<Gallery> _repository;
         protected readonly ICache cache;
     }
 }

@@ -15,8 +15,6 @@ namespace DigitalArchitecture.Services
             _uow = uow;
             _encryptionService = encryptionService;
             _cache = cacheProvider.GetCache();
-
-            
         }
 
         public RegistrationResponseDto Register(RegistrationRequestDto request)
