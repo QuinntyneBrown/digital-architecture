@@ -3,9 +3,9 @@ import "angular-rx-ui/src/main.ts";
 
 import { HomeContainerComponent } from "./app/home/home-container.component";
 import { ArticleDetailContainerComponent } from "./app/articles/article-detail-container.component";
-import { AppHeaderComponent } from "./app/shared/app-header.component";
-import { AppFooterComponent } from "./app/shared/app-footer.component";
-import { AdminHeaderComponent } from "./app/shared/admin-header.component";
+import { AppHeaderComponent } from "./app/shared/app-header";
+import { AppFooterComponent } from "./app/shared/app-footer";
+import { AdminHeaderComponent } from "./app/shared/admin-header";
 import { provide, provideRoutePromise } from "angular-rx-ui/src/components/core";
 
 var app = angular.module("digitalArchitectureApp", ["components"]) as any;
