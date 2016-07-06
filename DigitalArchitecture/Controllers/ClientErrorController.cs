@@ -11,16 +11,19 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/clientError")]
     public class ClientErrorController : ApiController
     {
-        public ClientErrorController()
+        public ClientErrorController(ITraceService traceService)
         {
+            _traceService = traceService;
         }
 
         [Authorize]
         [HttpPost]
         public HttpResponseMessage ReportClientError(ClientError clientError)
         {
-            TraceService.Diagnostics.Error(new Exception(clientError.Message), TracingEvents.ClientError.Message, clientError.Message, clientError.StackTrace);
+            _traceService.Diagnostics.Error(new Exception(clientError.Message), TracingEvents.ClientError.Message, clientError.Message, clientError.StackTrace);
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
+
+        protected readonly ITraceService _traceService;
     }
 }

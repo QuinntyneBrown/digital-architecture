@@ -7,7 +7,7 @@ namespace DigitalArchitecture.Trace
     {
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
-            logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty(TraceService.EventId, -1));
+            logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty(LoggerExtensions.EventId, -1));
         }
     }
 }

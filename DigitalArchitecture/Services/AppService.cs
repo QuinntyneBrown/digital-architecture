@@ -49,7 +49,7 @@ namespace DigitalArchitecture.Services
             return new AppDto(GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
 
-        public IQueryable<App> GetAll() => GetAll()
+        public IQueryable<App> GetAll() => _repository.GetAll()
             .Include(x=>x.UIs);
 
         protected readonly IUow uow;

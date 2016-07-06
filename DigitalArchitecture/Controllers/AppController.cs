@@ -12,9 +12,10 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/app")]
     public class AppController : ApiController
     {
-        public AppController(IAppService appService)
+        public AppController(IAppService appService, ITraceService traceService)
         {
             _appService = appService;
+            _traceService = traceService;
         }
 
         [Route("add")]
@@ -36,17 +37,17 @@ namespace DigitalArchitecture.Controllers
         [HttpGet]
         [ResponseType(typeof(ICollection<AppDto>))]
         public IHttpActionResult Get() {
-            using (var perf = TraceService.BeginTimedOperation())
+            using (var perf = _traceService.BeginTimedOperation())
             {
                 try
                 {
-                    perf.AddProperties("AppController-Get");
+                    perf.AddProperties("App-Get");
                     return Ok(_appService.Get());
                 }
                 catch (Exception e)
                 {
                     perf.AddProperties("Error");
-                    TraceService.Diagnostics.Event(TracingEvents.ErrorInAppController, e.Message);
+                    _traceService.Diagnostics.Event(TracingEvents.ErrorInAppController, e.Message);
                     return InternalServerError(e);
                 }
             }            
@@ -63,5 +64,6 @@ namespace DigitalArchitecture.Controllers
         public IHttpActionResult Remove(int id) { return Ok(_appService.Remove(id)); }
 
         protected readonly IAppService _appService;
+        protected readonly ITraceService _traceService;
     }
 }

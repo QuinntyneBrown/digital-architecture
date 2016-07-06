@@ -7,20 +7,13 @@ using static DigitalArchitecture.Trace.TracingEvents;
 
 namespace DigitalArchitecture.Trace
 {
-    public static class TraceService
+    public class TraceService: ITraceService
     {
-        public static ILogger Diagnostics;
-        public static ILogger Analytics;
-        public static ILogger Performance;
-        public const string EventId = "EventId";
+        public ILogger Diagnostics { get; set; }
+        public ILogger Analytics { get; set; }
+        public ILogger Performance { get; set; }
 
-        public static void Event(this ILogger logger, TracingEvent tracingEvent, params object[] properties)
-        {
-            properties = properties.Concat(new object[] { tracingEvent.EventId }).ToArray();
-            logger.Write(tracingEvent.Level, $"{tracingEvent.Message} {{{EventId}}}", properties);
-        }
-
-        public static ITimedOperation BeginTimedOperation(string operationInfo = null, [CallerMemberName] string caller = null)        
+        public ITimedOperation BeginTimedOperation(string operationInfo = null, [CallerMemberName] string caller = null)        
             => Performance
                 .BeginTimedOperation(
                     $"{caller}({operationInfo ?? string.Empty})",
@@ -29,5 +22,16 @@ namespace DigitalArchitecture.Trace
                     levelCompleted: LogEventLevel.Information,
                     levelExceeds: LogEventLevel.Verbose);
         
+    }
+
+    public static class LoggerExtensions
+    {
+        public static string EventId { get; set; } = "EventId";
+
+        public static void Event(this ILogger logger, TracingEvent tracingEvent, params object[] properties)
+        {
+            properties = properties.Concat(new object[] { tracingEvent.EventId }).ToArray();
+            logger.Write(tracingEvent.Level, $"{tracingEvent.Message} {{{EventId}}}", properties);
+        }
     }
 }

@@ -244,6 +244,7 @@
     <Compile Include="Models\UISection.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Trace\EventIdEnricher.cs" />
+    <Compile Include="Trace\ITraceService.cs" />
     <Compile Include="Trace\TraceService.cs" />
     <Compile Include="Trace\TraceEvent.cs" />
     <Compile Include="Trace\TracingEvents.cs" />

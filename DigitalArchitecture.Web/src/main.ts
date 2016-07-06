@@ -1,4 +1,5 @@
 ﻿/// <reference path="../ts/rx.all.d.ts" />
+import "angular-rx-ui/src/main.ts";
 
 import { HomeContainerComponent } from "./app/home/home-container.component";
 import { ArticleDetailContainerComponent } from "./app/articles/article-detail-container.component";
