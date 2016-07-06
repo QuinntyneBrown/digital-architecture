@@ -41,8 +41,6 @@ namespace DigitalArchitecture.Controllers
         [ResponseType(typeof(int))]
         public IHttpActionResult Remove(int id) { return Ok(_authorService.Remove(id)); }
 
-        protected readonly IAuthorService _authorService;
-
-
+        protected readonly IAuthorService _authorService;       
     }
 }
