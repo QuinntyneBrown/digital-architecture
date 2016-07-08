@@ -5,6 +5,7 @@ using DigitalArchitecture.Dtos;
 using System.Data.Entity;
 using System.Linq;
 using DigitalArchitecture.Models;
+using static DigitalArchitecture.Services.PropertyHelper;
 
 namespace DigitalArchitecture.Services
 {
@@ -12,9 +13,9 @@ namespace DigitalArchitecture.Services
     {
         public UIService(IUow uow, ICacheProvider cacheProvider)
         {
-            this.uow = uow;
-            this._repository = uow.UIs;
-            this.cache = cacheProvider.GetCache();
+            _uow = uow;
+            _repository = uow.UIs;
+            _cache = cacheProvider.GetCache();
         }
 
         public UIAddOrUpdateResponseDto AddOrUpdate(UIAddOrUpdateRequestDto request)
@@ -23,7 +24,7 @@ namespace DigitalArchitecture.Services
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
             if (entity == null) _repository.Add(entity = new UI());
             entity.Name = request.Name;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return new UIAddOrUpdateResponseDto(entity);
         }
 
@@ -31,7 +32,7 @@ namespace DigitalArchitecture.Services
         {
             var entity = _repository.GetById(id);
             entity.IsDeleted = true;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return id;
         }
 
@@ -47,15 +48,15 @@ namespace DigitalArchitecture.Services
         {
             return new UIDto(_repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
-
+        
         public IQueryable<UI> GetAll() => GetAll()
             .Include(x => x.Sections)
             .Include(x => x.Properties)
             .Include("UIProperties.Property")
             .Include("Sections.Section");
 
-        protected readonly IUow uow;
+        protected readonly IUow _uow;
         protected readonly IRepository<UI> _repository;
-        protected readonly ICache cache;
+        protected readonly ICache _cache;
     }
 }

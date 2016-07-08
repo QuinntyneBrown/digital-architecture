@@ -1,0 +1,1 @@
+﻿export * from "./article-detail-container.component";

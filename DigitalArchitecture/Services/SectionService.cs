@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using DigitalArchitecture.Data;
 using DigitalArchitecture.Dtos;
-using System.Data.Entity;
 using System.Linq;
 using DigitalArchitecture.Models;
+using static DigitalArchitecture.Services.PropertyHelper;
 
 namespace DigitalArchitecture.Services
 {
@@ -12,9 +12,9 @@ namespace DigitalArchitecture.Services
     {
         public SectionService(IUow uow, ICacheProvider cacheProvider)
         {
-            this.uow = uow;
-            this._repository = uow.Sections;
-            this.cache = cacheProvider.GetCache();
+            _uow = uow;
+            _repository = uow.Sections;
+            _cache = cacheProvider.GetCache();
         }
 
         public SectionAddOrUpdateResponseDto AddOrUpdate(SectionAddOrUpdateRequestDto request)
@@ -23,7 +23,7 @@ namespace DigitalArchitecture.Services
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
             if (entity == null) _repository.Add(entity = new Section());
             entity.Name = request.Name;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return new SectionAddOrUpdateResponseDto(entity);
         }
 
@@ -31,7 +31,7 @@ namespace DigitalArchitecture.Services
         {
             var entity = _repository.GetById(id);
             entity.IsDeleted = true;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return id;
         }
 
@@ -42,15 +42,14 @@ namespace DigitalArchitecture.Services
             foreach(var entity in entities) { response.Add(new SectionDto(entity)); }    
             return response;
         }
-
-
+        
         public SectionDto GetById(int id)
         {
             return new SectionDto(_repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
-
-        protected readonly IUow uow;
+        
+        protected readonly IUow _uow;
         protected readonly IRepository<Section> _repository;
-        protected readonly ICache cache;
+        protected readonly ICache _cache;
     }
 }

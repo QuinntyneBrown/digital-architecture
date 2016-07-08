@@ -33,10 +33,6 @@ var libs = [
     paths.npm + 'moment/moment.js'
 ];
 
-var ts = [
-    paths.npm + 'angular-rx-ui/dist/angular-rx-ui.d.ts',
-    paths.npm + 'rx/ts/rx.all.d.ts',
-];
 
 
 gulp.task("typedoc", function () {
@@ -45,10 +41,6 @@ gulp.task("typedoc", function () {
 
 gulp.task('libs', function () {
     return gulp.src(libs).pipe(gulp.dest(paths.lib));
-});
-
-gulp.task('ts', function () {
-    return gulp.src(ts).pipe(gulp.dest(paths.ts));
 });
 
 gulp.task('remove-compiled-js', function () {
@@ -111,11 +103,10 @@ gulp.task('compile-ts-tests', ['remove-compiled-js'], function () {
         .pipe(gulp.dest('./test/'));
 });
 
-
 gulp.task('watch', function () {
     gulp.watch([
         './src/**/*.ts', './src/**/*.html', './src/**/*.css', './src/**/*.scss'
     ], ['remove-compiled-js', 'webpack', 'run-unit-tests']);
 });
 
-gulp.task('default', ['remove-compiled-js','ts','libs', 'webpack', 'run-unit-tests', 'watch']);
+gulp.task('default', ['remove-compiled-js','libs', 'webpack', 'run-unit-tests', 'watch']);

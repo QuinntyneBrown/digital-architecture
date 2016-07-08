@@ -225,6 +225,12 @@
     <Content Include="gulpfile.js" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
+    <Content Include="src\app\app.component.html">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\app.component.scss">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\articles\article-detail-container.component.html">
       <DependentUpon>article-detail-container.component.ts</DependentUpon>
     </Content>
@@ -256,6 +262,13 @@
       <DependentUpon>app-header.component.ts</DependentUpon>
     </Content>
     <Content Include="tsconfig.json" />
+    <Content Include="typings\globals\angular-mocks\typings.json" />
+    <Content Include="typings\globals\angular-route\typings.json" />
+    <Content Include="typings\globals\angular\typings.json" />
+    <Content Include="typings\globals\fastclick\typings.json" />
+    <Content Include="typings\globals\jasmine\typings.json" />
+    <Content Include="typings\globals\jquery\typings.json" />
+    <Content Include="typings\globals\require\typings.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -286,17 +299,33 @@
     <TypeScriptCompile Include="src\app\articles\article-detail-container.component.spec.ts">
       <DependentUpon>article-detail-container.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\articles\index.ts" />
+    <TypeScriptCompile Include="src\app\home\index.ts" />
+    <TypeScriptCompile Include="src\app\routing\authorization-required-guard.ts" />
     <TypeScriptCompile Include="src\app\routing\index.ts" />
+    <TypeScriptCompile Include="src\app\routing\route-change-success-is-admin.reducer.ts" />
     <TypeScriptCompile Include="src\app\shared\admin-header\index.ts" />
     <TypeScriptCompile Include="src\app\shared\app-footer\index.ts" />
     <TypeScriptCompile Include="src\app\shared\app-header\index.ts" />
+    <TypeScriptCompile Include="src\app\environment.ts" />
+    <TypeScriptCompile Include="src\app\shared\bootstrap.ts" />
+    <TypeScriptCompile Include="src\app\shared\index.ts" />
     <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="ts\rx.all.d.ts" />
+    <TypeScriptCompile Include="typings\globals\rx\rx.all.d.ts" />
     <TypeScriptCompile Include="src\app\home\home-container.component.ts" />
     <TypeScriptCompile Include="src\app\articles\article-detail-container.component.ts" />
     <TypeScriptCompile Include="src\app\shared\app-header\app-header.component.ts" />
     <TypeScriptCompile Include="src\app\shared\app-footer\app-footer.component.ts" />
     <TypeScriptCompile Include="src\app\shared\admin-header\admin-header.component.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="typings\globals\angular-mocks\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\angular-route\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\angular\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\fastclick\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jasmine\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\require\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

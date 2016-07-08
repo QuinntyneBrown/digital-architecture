@@ -237,12 +237,14 @@
     <Compile Include="Models\PropertyType.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\SectionProperty.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Tenant.cs" />
     <Compile Include="Models\UI.cs" />
     <Compile Include="Models\UIProperty.cs" />
     <Compile Include="Models\UISection.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Services\PropertyHelper.cs" />
     <Compile Include="Trace\EventIdEnricher.cs" />
     <Compile Include="Trace\ITraceService.cs" />
     <Compile Include="Trace\LoggerExtensions.cs" />
@@ -374,9 +376,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="database.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

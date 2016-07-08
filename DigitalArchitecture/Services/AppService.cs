@@ -5,6 +5,7 @@ using DigitalArchitecture.Dtos;
 using System.Data.Entity;
 using System.Linq;
 using DigitalArchitecture.Models;
+using static DigitalArchitecture.Services.PropertyHelper;
 
 namespace DigitalArchitecture.Services
 {

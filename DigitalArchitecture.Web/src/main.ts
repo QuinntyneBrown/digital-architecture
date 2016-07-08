@@ -1,22 +1,24 @@
-﻿/// <reference path="../ts/rx.all.d.ts" />
-import "angular-rx-ui/src/main.ts";
+﻿import "angular-rx-ui/src/main.ts";
 
 import { HomeContainerComponent } from "./app/home/home-container.component";
 import { ArticleDetailContainerComponent } from "./app/articles/article-detail-container.component";
 import { AppHeaderComponent } from "./app/shared/app-header";
 import { AppFooterComponent } from "./app/shared/app-footer";
 import { AdminHeaderComponent } from "./app/shared/admin-header";
-import { provide, provideRoutePromise } from "angular-rx-ui/src/components/core";
+import { provide, provideRoutePromise, bootstrap } from "angular-rx-ui/src/components/core";
+import { authorizationRequiredGuard } from "./app/routing/authorization-required-guard";
+import { routeChangeSuccessIsAdminReducer } from "./app/routing/route-change-success-is-admin.reducer";
 
-var app = angular.module("digitalArchitectureApp", ["components"]) as any;
 
-app.component(HomeContainerComponent);
-app.component(ArticleDetailContainerComponent);
-app.component(AppHeaderComponent);
-app.component(AppFooterComponent);
-app.component(AdminHeaderComponent);
+const appModule = angular.module("digitalArchitectureApp", ["components"]) as any;
 
-app.config(["$routeProvider", ($routeProvider: angular.route.IRouteProvider) => {
+appModule.component(HomeContainerComponent);
+appModule.component(ArticleDetailContainerComponent);
+appModule.component(AppHeaderComponent);
+appModule.component(AppFooterComponent);
+appModule.component(AdminHeaderComponent);
+
+appModule.config(["$routeProvider", ($routeProvider: angular.route.IRouteProvider) => {
     
     $routeProvider
         .when("/", { template: "<home-container></home-container>" })
@@ -46,42 +48,15 @@ app.config(["$routeProvider", ($routeProvider: angular.route.IRouteProvider) => 
         })
 }]);
 
-provideRoutePromise(app, {
-    route: "*",
-    promise: ["loginRedirect", "$q", "$route", "invokeAsync", "store", "userActionCreator", (loginRedirect, $q: angular.IQService, $route, invokeAsync, store: any, userActionCreator: any) => {
-        var deferred = $q.defer();
-        invokeAsync(userActionCreator.current).then(results => {
-            if ($route.current.$$route.authorizationRequired && !(store.getValue() as any).currentUser) {
-                loginRedirect.redirectToLogin();
-                deferred.reject()
-            } else {
-                deferred.resolve();
-            }
-        });
-        return deferred.promise;
-    }],
-    priority: -999
+provideRoutePromise(appModule, authorizationRequiredGuard);
+appModule.run(routeChangeSuccessIsAdminReducer);
+
+bootstrap(appModule, {
+    api: "api",
+    loginRedirectUrl: "/",
+    html5Mode:true,
+    routes: [{
+        path: "/",
+        component: HomeContainerComponent
+    }]
 });
-
-app.config(["apiEndpointProvider", (apiEndpointProvider) => {
-    apiEndpointProvider.configure("api");
-}]);
-
-app.config(["loginRedirectProvider", (loginRedirectProvider) => {
-    loginRedirectProvider.setDefaultUrl("/");
-}]);
-
-app.config(["$locationProvider", ($locationProvider: angular.ILocationProvider) => {
-    $locationProvider.html5Mode(true);
-}]);
-
-app.run(["$location", "$rootScope", ($location: angular.ILocationService, $rootScope: angular.IRootScopeService) => {
-    $rootScope.$on("$routeChangeSuccess", () => {
-        var path = $location.path();
-        if (path.length >= 6 && (path.substring(0, 6) == "/admin" || path.substring(0, 6) == "/login")) {
-            (<any>$rootScope).isAdmin = true;
-        } else {
-            (<any>$rootScope).isAdmin = false;
-        }
-    });
-}]);
