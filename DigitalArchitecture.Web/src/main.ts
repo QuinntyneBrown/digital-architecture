@@ -5,10 +5,10 @@ import { ArticleDetailContainerComponent } from "./app/articles/article-detail-c
 import { AppHeaderComponent } from "./app/shared/app-header";
 import { AppFooterComponent } from "./app/shared/app-footer";
 import { AdminHeaderComponent } from "./app/shared/admin-header";
-import { provide, provideRoutePromise, bootstrap } from "angular-rx-ui/src/components/core";
+import { provide, provideRoutePromise } from "angular-rx-ui/src/components/core";
 import { authorizationRequiredGuard } from "./app/routing/authorization-required-guard";
 import { routeChangeSuccessIsAdminReducer } from "./app/routing/route-change-success-is-admin.reducer";
-
+import { bootstrap} from "angular-rx-ui/src/components/core";
 
 const appModule = angular.module("digitalArchitectureApp", ["components"]) as any;
 
@@ -20,10 +20,6 @@ appModule.component(AdminHeaderComponent);
 
 appModule.config(["$routeProvider", ($routeProvider: angular.route.IRouteProvider) => {
     
-    $routeProvider
-        .when("/", { template: "<home-container></home-container>" })
-        .when("/article/:slug", { template: "<article-detail-container></article-detail-container>" });
-
     ($routeProvider as any)
         .when("/login", { template: "<login-container></login-container>" })
         .when("/admin", {
@@ -55,8 +51,13 @@ bootstrap(appModule, {
     api: "api",
     loginRedirectUrl: "/",
     html5Mode:true,
-    routes: [{
-        path: "/",
-        component: HomeContainerComponent
-    }]
+    routes: [
+        {
+            path: "/",
+            component: HomeContainerComponent
+        },
+        { 
+            path: "/article/:slug",
+            component: ArticleDetailContainerComponent
+        }]
 });

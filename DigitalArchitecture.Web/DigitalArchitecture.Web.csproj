@@ -291,11 +291,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="node_modules\angular-rx-ui\ts\" />
+    <Folder Include="node_modules\" />
     <Folder Include="src\assets\scss\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="node_modules\angular-rx-ui\lib\index.ts" />
     <TypeScriptCompile Include="src\app\articles\article-detail-container.component.spec.ts">
       <DependentUpon>article-detail-container.component.ts</DependentUpon>
     </TypeScriptCompile>

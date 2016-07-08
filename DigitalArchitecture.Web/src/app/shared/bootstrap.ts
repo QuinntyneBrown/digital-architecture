@@ -9,7 +9,7 @@
     }]);
 
     app.config(["$locationProvider", ($locationProvider: angular.ILocationProvider) => {
-        $locationProvider.html5Mode(options.isHtml5Mode);
+        $locationProvider.html5Mode(options.html5Mode);
     }]);
 
 }
