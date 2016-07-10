@@ -34,6 +34,8 @@ namespace DigitalArchitecture
             container.RegisterType<IUserService, UserService>();
             container.RegisterType<IPerformanceService, PerformanceService>();
             container.RegisterType<ILogger, SeriLogger>();
+            container.RegisterType<IRssFeedService, RssFeedService>();
+
             container.RegisterInstance(TraceConfiguration.LazyConfig);
             container.RegisterInstance(AuthConfiguration.LazyConfig);
                       

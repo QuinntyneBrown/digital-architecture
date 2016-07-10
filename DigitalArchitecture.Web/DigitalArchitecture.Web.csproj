@@ -303,7 +303,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="node_modules\" />
     <Folder Include="src\assets\scss\" />
   </ItemGroup>
   <ItemGroup>
