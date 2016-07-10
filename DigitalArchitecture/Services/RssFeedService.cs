@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.ServiceModel.Syndication;
+using static DigitalArchitecture.Common.Constants;
 
 namespace DigitalArchitecture.Services
 {
@@ -12,18 +13,15 @@ namespace DigitalArchitecture.Services
             _articleService = articleService;
         }
 
-        public SyndicationFeed Get()
+        public SyndicationFeed Get() => new SyndicationFeed(BlogTitle, BlogDescription, new Uri(BlogUrl))
         {
-            return new SyndicationFeed("Digital Architecture","A blog about Digital Architecture",new Uri("http://digitalarchitecture.ca"))
-            {
-                Items = _articleService.Get().Select(x => new SyndicationItem(
-                    x.Headline,
-                    x.Excerpt,
-                    new Uri(x.Url),
-                    $"{x.Id}",
-                    x.DateModified.Value)).ToList()
-            };              
-        }
+            Items = _articleService.Get().Select(x => new SyndicationItem(
+                x.Headline,
+                x.Excerpt,
+                new Uri(x.Url),
+                $"{x.Id}",
+                x.DateModified.Value)).ToList()
+        };
 
         protected readonly ICache _cache;
         protected readonly IArticleService _articleService;
