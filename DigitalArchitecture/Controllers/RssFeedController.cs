@@ -1,6 +1,7 @@
 ﻿using DigitalArchitecture.Services;
 using System.ServiceModel.Syndication;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace DigitalArchitecture.Controllers
 {
@@ -13,6 +14,8 @@ namespace DigitalArchitecture.Controllers
             _rssFeedService = rssFeedService;
         }
 
+        [Route("get")]
+        [ResponseType(typeof(Rss20FeedFormatter))]
         public Rss20FeedFormatter Get() => new Rss20FeedFormatter(_rssFeedService.Get());
 
         protected readonly IRssFeedService _rssFeedService;

@@ -219,6 +219,7 @@
   <ItemGroup>
     <Compile Include="ApiConfiguration.cs" />
     <Compile Include="App_Start\AppActivator.cs" />
+    <Compile Include="Common\FailedRequestException.cs" />
     <Compile Include="Configuration\ITraceConfiguration.cs" />
     <Compile Include="Configuration\TraceConfiguration.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
@@ -227,6 +228,8 @@
     <Compile Include="Dtos\CurrentUserResponseDto.cs" />
     <Compile Include="Dtos\PerformanceDto.cs" />
     <Compile Include="Dtos\PhotoUploadResponseDto.cs" />
+    <Compile Include="Extensions\HttpResponseMessageExtensions.cs" />
+    <Compile Include="Helpers\StartupHelper.cs" />
     <Compile Include="Models\App.cs" />
     <Compile Include="Models\AppProperty.cs" />
     <Compile Include="Models\ArticleCategory.cs" />
