@@ -1,5 +1,6 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Trace;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,9 +11,10 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/ui")]
     public class UIController : ApiController
     {
-        public UIController(IUIService uiService)
+        public UIController(IUIService uiService, ITraceService traceService)
         {
             _uiService = uiService;
+            _traceService = traceService;
         }
 
         [Route("add")]
@@ -41,6 +43,7 @@ namespace DigitalArchitecture.Controllers
         [ResponseType(typeof(int))]
         public IHttpActionResult Remove(int id) { return Ok(_uiService.Remove(id)); }
 
-        protected readonly IUIService _uiService;        
+        protected readonly IUIService _uiService;
+        protected readonly ITraceService _traceService;
     }
 }

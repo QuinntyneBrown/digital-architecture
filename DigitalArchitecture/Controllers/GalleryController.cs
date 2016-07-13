@@ -1,5 +1,6 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Trace;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,9 +11,10 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/gallery")]
     public class GalleryController : ApiController
     {
-        public GalleryController(IGalleryService galleryService)
+        public GalleryController(IGalleryService galleryService, ITraceService traceService)
         {
             _galleryService = galleryService;
+            _traceService = traceService;
         }
 
         [Route("add")]
@@ -42,7 +44,6 @@ namespace DigitalArchitecture.Controllers
         public IHttpActionResult Remove(int id) { return Ok(_galleryService.Remove(id)); }
 
         protected readonly IGalleryService _galleryService;
-
-
+        protected readonly ITraceService _traceService;        
     }
 }

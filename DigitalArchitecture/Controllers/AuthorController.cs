@@ -1,5 +1,6 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Trace;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,9 +11,10 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/author")]
     public class AuthorController : ApiController
     {
-        public AuthorController(IAuthorService authorService)
+        public AuthorController(IAuthorService authorService, ITraceService traceService)
         {
             _authorService = authorService;
+            _traceService = traceService;
         }
 
         [Route("add")]
@@ -41,6 +43,7 @@ namespace DigitalArchitecture.Controllers
         [ResponseType(typeof(int))]
         public IHttpActionResult Remove(int id) { return Ok(_authorService.Remove(id)); }
 
-        protected readonly IAuthorService _authorService;       
+        protected readonly IAuthorService _authorService;
+        protected readonly ITraceService _traceService;
     }
 }

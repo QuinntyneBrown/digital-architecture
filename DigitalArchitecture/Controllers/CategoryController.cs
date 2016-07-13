@@ -1,5 +1,6 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Trace;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,9 +11,10 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/category")]
     public class CategoryController : ApiController
     {
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService, ITraceService traceService)
         {
             _categoryService = categoryService;
+            _traceService = traceService;
         }
 
         [Route("add")]
@@ -42,7 +44,7 @@ namespace DigitalArchitecture.Controllers
         public IHttpActionResult Remove(int id) { return Ok(_categoryService.Remove(id)); }
 
         protected readonly ICategoryService _categoryService;
-
-
+        protected readonly ITraceService _traceService;
+        
     }
 }
