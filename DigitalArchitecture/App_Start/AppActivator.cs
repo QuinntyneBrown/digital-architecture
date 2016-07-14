@@ -13,8 +13,11 @@ namespace DigitalArchitecture
         {
             var dbMigrator = new DbMigrator(new Migrations.Configuration());
             dbMigrator.Update();
+
+#if DEBUG
             PreCache();
             VersionApp();
+#endif
         }
     }
 }
