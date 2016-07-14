@@ -1,5 +1,6 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Trace;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,9 +11,10 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/user")]
     public class UserController : ApiController
     {
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, ITraceService traceService)
         {
             _userService = userService;
+            _traceService = traceService;
         }
 
         [Route("add")]
@@ -63,7 +65,7 @@ namespace DigitalArchitecture.Controllers
         }
 
         protected readonly IUserService _userService;
-
+        protected readonly ITraceService _traceService;
 
     }
 }

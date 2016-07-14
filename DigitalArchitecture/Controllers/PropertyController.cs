@@ -1,5 +1,6 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Trace;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,9 +11,10 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/property")]
     public class PropertyController : ApiController
     {
-        public PropertyController(IPropertyService propertyService)
+        public PropertyController(IPropertyService propertyService, ITraceService traceService)
         {
             _propertyService = propertyService;
+            _traceService = traceService;
         }
 
         [Route("add")]
@@ -42,7 +44,7 @@ namespace DigitalArchitecture.Controllers
         public IHttpActionResult Remove(int id) { return Ok(_propertyService.Remove(id)); }
 
         protected readonly IPropertyService _propertyService;
-
+        protected readonly ITraceService _traceService;
 
     }
 }

@@ -1,5 +1,6 @@
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Trace;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,9 +11,10 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/role")]
     public class RoleController : ApiController
     {
-        public RoleController(IRoleService roleService)
+        public RoleController(IRoleService roleService, ITraceService traceService)
         {
             _roleService = roleService;
+            _traceService = traceService;
         }
 
         [Route("add")]
@@ -42,7 +44,7 @@ namespace DigitalArchitecture.Controllers
         public IHttpActionResult Remove(int id) { return Ok(_roleService.Remove(id)); }
 
         protected readonly IRoleService _roleService;
-
+        protected readonly ITraceService _traceService;
 
     }
 }

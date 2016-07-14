@@ -2,6 +2,7 @@ using DigitalArchitecture.Data;
 using DigitalArchitecture.Dtos;
 using DigitalArchitecture.Models;
 using DigitalArchitecture.Services;
+using DigitalArchitecture.Trace;
 using DigitalArchitecture.UploadHandlers;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,13 @@ namespace DigitalArchitecture.Controllers
     [RoutePrefix("api/photo")]
     public class PhotoController : ApiController
     {
-        public PhotoController(ICacheProvider cacheProvider, IPhotoService photoService, IUow uow)
+        public PhotoController(ICacheProvider cacheProvider, IPhotoService photoService, IUow uow, ITraceService traceService)
         {
             _photoService = photoService;
             _uow = uow;
             _repository = uow.Photos;
             _cache = cacheProvider.GetCache();
+            _traceService = traceService;
         }
 
         [Route("add")]
@@ -125,6 +127,7 @@ namespace DigitalArchitecture.Controllers
         }
 
         protected readonly IPhotoService _photoService;
+        protected readonly ITraceService _traceService;
         protected readonly IRepository<Photo> _repository;
         protected readonly IUow _uow;
         protected readonly ICache _cache;
