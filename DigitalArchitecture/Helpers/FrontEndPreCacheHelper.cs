@@ -1,8 +1,12 @@
 ﻿using Microsoft.Practices.Unity;
 using DigitalArchitecture.Services;
 using System.Linq;
-using System.Web;
 using System.Collections.Generic;
+using static System.IO.File;
+using static DigitalArchitecture.UnityConfiguration;
+using static System.Web.Hosting.HostingEnvironment;
+using static Newtonsoft.Json.JsonConvert;
+
 
 namespace DigitalArchitecture.Helpers
 {
@@ -10,11 +14,11 @@ namespace DigitalArchitecture.Helpers
     {
         public static void PreCache()
         {
-            var appService = UnityConfiguration.GetContainer().Resolve<IAppService>();
+            var appService = GetContainer().Resolve<IAppService>();
             var app = appService.Get().FirstOrDefault();
-            var serializedApp = Newtonsoft.Json.JsonConvert.SerializeObject(app);
-            var indexHtmlFileName = System.Web.Hosting.HostingEnvironment.MapPath(".");
-            var indexHtml = System.IO.File.ReadAllLines(indexHtmlFileName);
+            var serializedApp = SerializeObject(app);
+            var indexHtmlFileName = MapPath(".");
+            var indexHtml = ReadAllLines(indexHtmlFileName);
             var newIndexHtml = new List<string>();
 
             var isBetweenStartAndEndTag = false;
@@ -40,7 +44,7 @@ namespace DigitalArchitecture.Helpers
                 }
             }
 
-            System.IO.File.WriteAllLines(indexHtmlFileName, newIndexHtml.ToArray());
+            WriteAllLines(indexHtmlFileName, newIndexHtml.ToArray());
         }
     }
 }
