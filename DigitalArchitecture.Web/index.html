@@ -9,20 +9,8 @@
           href="/api/rss/" />
 </head>
 <body data-ng-app="digitalArchitectureApp">
-
-    <div data-ng-if="!isAdmin">   
-        <app-header></app-header>
-        <div data-ng-view></div>
-        <app-footer></app-footer>
-    </div>
-
-    <div data-ng-if="isAdmin" class="admin-app">
-        <admin-header></admin-header>
-        <div>
-            <div></div>
-            <div data-ng-view></div>
-        </div>        
-    </div>
+    <app data-ng-if="!isAdmin"></app>
+    <admin-app data-ng-if="isAdmin"></admin-app>
 </body>
 
 <!-- start:preCacheData -->

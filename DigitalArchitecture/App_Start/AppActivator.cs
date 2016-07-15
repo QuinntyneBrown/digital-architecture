@@ -16,9 +16,9 @@ namespace DigitalArchitecture
             dbMigrator.Update();
 
 #if DEBUG
-            SetLocalStorageKey();
-            PreCache();
-            VersionApp();            
+            //SetLocalStorageKey();
+            //PreCache();
+            //VersionApp();            
 #endif
         }
     }

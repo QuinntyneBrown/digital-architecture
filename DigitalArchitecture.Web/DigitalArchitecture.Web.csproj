@@ -225,6 +225,12 @@
     <Content Include="gulpfile.js" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
+    <Content Include="src\app\admin-app.component.html">
+      <DependentUpon>admin-app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\admin-app.component.scss">
+      <DependentUpon>admin-app.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\app.component.html">
       <DependentUpon>app.component.ts</DependentUpon>
     </Content>
@@ -337,6 +343,7 @@
     <TypeScriptCompile Include="src\app\articles\article-container.component.ts" />
     <TypeScriptCompile Include="src\app\login\index.ts" />
     <TypeScriptCompile Include="src\app\login\login-container.component.ts" />
+    <TypeScriptCompile Include="src\app\admin-app.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

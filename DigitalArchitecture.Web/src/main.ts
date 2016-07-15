@@ -6,6 +6,8 @@ import { LoginRoutes, LoginContainerComponent } from "./app/login";
 import { AppHeaderComponent } from "./app/shared/app-header";
 import { AppFooterComponent } from "./app/shared/app-footer";
 import { AdminHeaderComponent } from "./app/shared/admin-header";
+import { AdminAppComponent } from "./app/admin-app.component";
+import { AppComponent } from "./app/app.component";
 import { provide, provideRoutePromise } from "angular-rx-ui/src/components/core";
 import { authorizationRequiredGuard } from "./app/routing/authorization-required-guard";
 import { routeChangeSuccessIsAdminReducer } from "./app/routing/route-change-success-is-admin.reducer";
@@ -13,6 +15,8 @@ import { bootstrap } from "angular-rx-ui/src/components/core";
 
 const appModule = angular.module("digitalArchitectureApp", ["components"]) as any;
 
+appModule.component(AppComponent);
+appModule.component(AdminAppComponent);
 appModule.component(ArticleEditorContainerComponent);
 appModule.component(ArticleContainerComponent);
 appModule.component(ArticlesContainerComponent);
