@@ -255,6 +255,13 @@
     <Content Include="src\app\articles\articles-container.component.scss">
       <DependentUpon>articles-container.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\content-aggregation\components\property-editor.component.html" />
+    <Content Include="src\app\content-aggregation\components\property-list.component.html" />
+    <Content Include="src\app\content-aggregation\components\property.component.html" />
+    <Content Include="src\app\content-aggregation\containers\apps-container.component.html" />
+    <Content Include="src\app\content-aggregation\containers\properties-container.component.html" />
+    <Content Include="src\app\content-aggregation\containers\sections-container.component.html" />
+    <Content Include="src\app\content-aggregation\containers\uis-container.component.html" />
     <Content Include="src\app\login\login-container.component.html">
       <DependentUpon>login-container.component.ts</DependentUpon>
     </Content>
@@ -287,6 +294,13 @@
     <Content Include="typings\globals\jasmine\typings.json" />
     <Content Include="typings\globals\jquery\typings.json" />
     <Content Include="typings\globals\require\typings.json" />
+    <Content Include="src\app\content-aggregation\components\property-editor.component.scss" />
+    <Content Include="src\app\content-aggregation\components\property-list.component.scss" />
+    <Content Include="src\app\content-aggregation\components\property.component.scss" />
+    <Content Include="src\app\content-aggregation\containers\apps-container.component.scss" />
+    <Content Include="src\app\content-aggregation\containers\properties-container.component.scss" />
+    <Content Include="src\app\content-aggregation\containers\sections-container.component.scss" />
+    <Content Include="src\app\content-aggregation\containers\uis-container.component.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -314,6 +328,42 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\app\articles\articles.routes.ts" />
     <TypeScriptCompile Include="src\app\articles\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\app.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\property.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\section.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\ui.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\app.actions.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\property.actions.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\section.actions.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\ui.actions.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\property-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\property-list.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\property.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\apps-container.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\properties-container.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\sections-container.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\uis-container.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\content-aggregation.routes.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\app.model.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\property.model.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\section.model.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\ui.model.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\app.reducers.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\property.reducers.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\section.reducers.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\ui.reducers.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\app.service.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\property.service.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\section.service.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\ui.service.ts" />
     <TypeScriptCompile Include="src\app\login\login.routes.ts" />
     <TypeScriptCompile Include="src\app\routing\authorization-required-guard.ts" />
     <TypeScriptCompile Include="src\app\routing\index.ts" />
