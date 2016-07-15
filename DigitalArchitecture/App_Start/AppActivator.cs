@@ -2,6 +2,7 @@
 using WebActivatorEx;
 using static DigitalArchitecture.Helpers.FrontEndPreCacheHelper;
 using static DigitalArchitecture.Helpers.FrontEndAppVersionHelper;
+using static DigitalArchitecture.Helpers.LocalStorageHelper;
 
 [assembly: PostApplicationStartMethod(typeof(DigitalArchitecture.AppActivator), "PostStart")]
 
@@ -15,8 +16,9 @@ namespace DigitalArchitecture
             dbMigrator.Update();
 
 #if DEBUG
+            SetLocalStorageKey();
             PreCache();
-            VersionApp();
+            VersionApp();            
 #endif
         }
     }

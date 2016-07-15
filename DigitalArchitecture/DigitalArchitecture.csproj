@@ -231,6 +231,7 @@
     <Compile Include="Extensions\HttpResponseMessageExtensions.cs" />
     <Compile Include="Helpers\FrontEndAppVersionHelper.cs" />
     <Compile Include="Helpers\FrontEndPreCacheHelper.cs" />
+    <Compile Include="Helpers\LocalStorageHelper.cs" />
     <Compile Include="Helpers\StartupHelper.cs" />
     <Compile Include="Models\App.cs" />
     <Compile Include="Models\AppProperty.cs" />
