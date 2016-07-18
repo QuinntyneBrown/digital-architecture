@@ -1,39 +1,35 @@
-﻿import "angular-rx-ui/src/main.ts";
+﻿require("./app/articles");
+require("./app/content-aggregation");
+require("./app/pages");
+require("./app/shared");
 
-import { ArticlesRoutes, ArticleEditorContainerComponent, ArticlesContainerComponent, ArticleContainerComponent } from "./app/articles";
-import { LoginRoutes, LoginContainerComponent } from "./app/login";
+import { ArticlesRoutes } from "./app/articles";
+import { PagesRoutes } from "./app/pages";
 
-import { AppHeaderComponent } from "./app/shared/app-header";
-import { AppFooterComponent } from "./app/shared/app-footer";
-import { AdminHeaderComponent } from "./app/shared/admin-header";
-import { AdminAppComponent } from "./app/admin-app.component";
+import { provide, provideRoutePromise, bootstrap } from "angular-rx-ui/src/components/core";
+import { authorizationGuard } from "angular-rx-ui/src/components/routing/authorization-guard";
+import { routeChangeSuccessIsAdminReducer } from "angular-rx-ui/src/components/routing/route-change-success-is-admin.reducer";
+
 import { AppComponent } from "./app/app.component";
-import { provide, provideRoutePromise } from "angular-rx-ui/src/components/core";
-import { authorizationRequiredGuard } from "./app/routing/authorization-required-guard";
-import { routeChangeSuccessIsAdminReducer } from "./app/routing/route-change-success-is-admin.reducer";
-import { bootstrap } from "angular-rx-ui/src/components/core";
+import { AdminAppComponent } from "./app/admin-app.component";
 
-const appModule = angular.module("digitalArchitectureApp", ["components"]) as any;
-
-appModule.component(AppComponent);
-appModule.component(AdminAppComponent);
-appModule.component(ArticleEditorContainerComponent);
-appModule.component(ArticleContainerComponent);
-appModule.component(ArticlesContainerComponent);
-appModule.component(LoginContainerComponent);
-appModule.component(AppHeaderComponent);
-appModule.component(AppFooterComponent);
-appModule.component(AdminHeaderComponent);
-
-provideRoutePromise(appModule, authorizationRequiredGuard);
-appModule.run(routeChangeSuccessIsAdminReducer);
+const appModule = angular.module("digitalArchitectureApp", [
+    "components",
+    "app.articles",
+    "app.contentAggregation",    
+    "app.pages",
+    "app.shared"
+]);
 
 bootstrap(appModule, {
     api: "api",
+    components: [AppComponent, AdminAppComponent],
     loginRedirectUrl: "/",
-    html5Mode:true,
+    html5Mode: true,
+    guards: [authorizationGuard],
+    run: [routeChangeSuccessIsAdminReducer],
     routes: [
         ...ArticlesRoutes,
-        ...LoginRoutes
+        ...PagesRoutes
     ]
 });

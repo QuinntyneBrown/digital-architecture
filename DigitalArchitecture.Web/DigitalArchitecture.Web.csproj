@@ -7,8 +7,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
+    <ProductVersion></ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{658DA84D-AD6C-414A-9333-B89232911187}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -23,8 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -282,10 +280,10 @@
     <Content Include="src\app\content-aggregation\containers\uis-container.component.scss">
       <DependentUpon>uis-container.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\login\login-container.component.html">
+    <Content Include="src\app\pages\login-container.component.html">
       <DependentUpon>login-container.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\login\login-container.component.scss">
+    <Content Include="src\app\pages\login-container.component.scss">
       <DependentUpon>login-container.component.ts</DependentUpon>
     </Content>
     <Content Include="src\app\shared\admin-header\admin-header.component.html">
@@ -323,6 +321,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="src\app\pages\article-page-container.component.scss" />
+    <Content Include="src\app\pages\article-page-container.component.html" />
+    <Content Include="src\app\pages\articles-page-container.component.scss" />
+    <Content Include="src\app\pages\articles-page-container.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -380,7 +382,8 @@
     <TypeScriptCompile Include="src\app\content-aggregation\services\property.service.ts" />
     <TypeScriptCompile Include="src\app\content-aggregation\services\section.service.ts" />
     <TypeScriptCompile Include="src\app\content-aggregation\services\ui.service.ts" />
-    <TypeScriptCompile Include="src\app\login\login.routes.ts" />
+    <TypeScriptCompile Include="src\app\pages\index.ts" />
+    <TypeScriptCompile Include="src\app\pages\pages.routes.ts" />
     <TypeScriptCompile Include="src\app\routing\authorization-required-guard.ts" />
     <TypeScriptCompile Include="src\app\routing\index.ts" />
     <TypeScriptCompile Include="src\app\routing\route-change-success-is-admin.reducer.ts" />
@@ -407,9 +410,12 @@
     <TypeScriptCompile Include="src\app\articles\article-editor-container.component.ts" />
     <TypeScriptCompile Include="src\app\articles\articles-container.component.ts" />
     <TypeScriptCompile Include="src\app\articles\article-container.component.ts" />
-    <TypeScriptCompile Include="src\app\login\index.ts" />
-    <TypeScriptCompile Include="src\app\login\login-container.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\login-container.component.ts" />
     <TypeScriptCompile Include="src\app\admin-app.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\article-page-container.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\article-page-container.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\articles-page-container.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\articles-page-container.component.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -433,8 +439,7 @@
           <IISUrl>http://localhost:56627/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl></CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
