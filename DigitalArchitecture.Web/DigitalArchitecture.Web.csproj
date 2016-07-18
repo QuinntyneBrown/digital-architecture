@@ -394,9 +394,6 @@
     <TypeScriptCompile Include="src\app\content-aggregation\services\ui.service.ts" />
     <TypeScriptCompile Include="src\app\pages\index.ts" />
     <TypeScriptCompile Include="src\app\pages\pages.routes.ts" />
-    <TypeScriptCompile Include="src\app\routing\authorization-required-guard.ts" />
-    <TypeScriptCompile Include="src\app\routing\index.ts" />
-    <TypeScriptCompile Include="src\app\routing\route-change-success-is-admin.reducer.ts" />
     <TypeScriptCompile Include="src\app\shared\admin-header\index.ts" />
     <TypeScriptCompile Include="src\app\shared\app-footer\index.ts" />
     <TypeScriptCompile Include="src\app\shared\app-header\index.ts" />
