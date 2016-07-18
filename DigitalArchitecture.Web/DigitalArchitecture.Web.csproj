@@ -7,7 +7,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{658DA84D-AD6C-414A-9333-B89232911187}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -22,7 +23,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -280,6 +282,18 @@
     <Content Include="src\app\content-aggregation\containers\uis-container.component.scss">
       <DependentUpon>uis-container.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\pages\article-page-container.component.html">
+      <DependentUpon>article-page-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\article-page-container.component.scss">
+      <DependentUpon>article-page-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\articles-page-container.component.html">
+      <DependentUpon>articles-page-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\articles-page-container.component.scss">
+      <DependentUpon>articles-page-container.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\pages\login-container.component.html">
       <DependentUpon>login-container.component.ts</DependentUpon>
     </Content>
@@ -321,10 +335,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="src\app\pages\article-page-container.component.scss" />
-    <Content Include="src\app\pages\article-page-container.component.html" />
-    <Content Include="src\app\pages\articles-page-container.component.scss" />
-    <Content Include="src\app\pages\articles-page-container.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -413,9 +423,7 @@
     <TypeScriptCompile Include="src\app\pages\login-container.component.ts" />
     <TypeScriptCompile Include="src\app\admin-app.component.ts" />
     <TypeScriptCompile Include="src\app\pages\article-page-container.component.ts" />
-    <TypeScriptCompile Include="src\app\pages\article-page-container.component.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\articles-page-container.component.ts" />
-    <TypeScriptCompile Include="src\app\pages\articles-page-container.component.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -439,7 +447,8 @@
           <IISUrl>http://localhost:56627/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
