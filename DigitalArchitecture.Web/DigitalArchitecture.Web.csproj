@@ -237,22 +237,19 @@
     <Content Include="src\app\app.component.scss">
       <DependentUpon>app.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\articles\article-container.component.html">
-      <DependentUpon>article-container.component.ts</DependentUpon>
+    <Content Include="src\app\articles\article-editor.component.html">
+      <DependentUpon>article-editor.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\articles\article-container.component.scss">
-      <DependentUpon>article-container.component.ts</DependentUpon>
+    <Content Include="src\app\articles\article-list.component.html">
+      <DependentUpon>article-list.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\articles\article-editor-container.component.html">
-      <DependentUpon>article-editor-container.component.ts</DependentUpon>
+    <Content Include="src\app\articles\article.component.html">
+      <DependentUpon>article.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\articles\article-editor-container.component.scss">
-      <DependentUpon>article-editor-container.component.ts</DependentUpon>
+    <Content Include="src\app\articles\article.component.scss">
+      <DependentUpon>article.component.ts</DependentUpon>
     </Content>
     <Content Include="src\app\articles\articles-container.component.html">
-      <DependentUpon>articles-container.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\articles\articles-container.component.scss">
       <DependentUpon>articles-container.component.ts</DependentUpon>
     </Content>
     <Content Include="src\app\content-aggregation\components\property-editor.component.html" />
@@ -300,6 +297,21 @@
     <Content Include="src\app\pages\login-container.component.scss">
       <DependentUpon>login-container.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\photos\photo-editor.component.html">
+      <DependentUpon>photo-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photos\photo-list.component.html">
+      <DependentUpon>photo-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photos\photo.component.html">
+      <DependentUpon>photo.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photos\photo.component.scss">
+      <DependentUpon>photo.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photos\photos-container.component.html">
+      <DependentUpon>photos-container.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\shared\admin-header\admin-header.component.html">
       <DependentUpon>admin-header.component.ts</DependentUpon>
     </Content>
@@ -329,6 +341,24 @@
     <Content Include="src\app\content-aggregation\components\property-editor.component.scss" />
     <Content Include="src\app\content-aggregation\components\property-list.component.scss" />
     <Content Include="src\app\content-aggregation\components\property.component.scss" />
+    <Content Include="src\app\photos\photo-editor.component.scss">
+      <DependentUpon>photo-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photos\photo-list.component.scss">
+      <DependentUpon>photo-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photos\photos-container.component.scss">
+      <DependentUpon>photos-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\articles\article-editor.component.scss">
+      <DependentUpon>article-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\articles\article-list.component.scss">
+      <DependentUpon>article-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\articles\articles-container.component.scss">
+      <DependentUpon>articles-container.component.ts</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -355,7 +385,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app\articles\articles.routes.ts" />
-    <TypeScriptCompile Include="src\app\articles\index.ts" />
     <TypeScriptCompile Include="src\app\content-aggregation\action-creators\app.action-creator.ts" />
     <TypeScriptCompile Include="src\app\content-aggregation\action-creators\index.ts" />
     <TypeScriptCompile Include="src\app\content-aggregation\action-creators\property.action-creator.ts" />
@@ -394,6 +423,7 @@
     <TypeScriptCompile Include="src\app\content-aggregation\services\ui.service.ts" />
     <TypeScriptCompile Include="src\app\pages\index.ts" />
     <TypeScriptCompile Include="src\app\pages\pages.routes.ts" />
+    <TypeScriptCompile Include="src\app\photos\photos.routes.ts" />
     <TypeScriptCompile Include="src\app\shared\admin-header\index.ts" />
     <TypeScriptCompile Include="src\app\shared\app-footer\index.ts" />
     <TypeScriptCompile Include="src\app\shared\app-header\index.ts" />
@@ -414,13 +444,30 @@
     <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\require\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
-    <TypeScriptCompile Include="src\app\articles\article-editor-container.component.ts" />
-    <TypeScriptCompile Include="src\app\articles\articles-container.component.ts" />
-    <TypeScriptCompile Include="src\app\articles\article-container.component.ts" />
     <TypeScriptCompile Include="src\app\pages\login-container.component.ts" />
     <TypeScriptCompile Include="src\app\admin-app.component.ts" />
     <TypeScriptCompile Include="src\app\pages\article-page-container.component.ts" />
     <TypeScriptCompile Include="src\app\pages\articles-page-container.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.model.ts" />
+    <TypeScriptCompile Include="src\app\photos\index.ts" />
+    <TypeScriptCompile Include="src\app\photos\photos-container.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.actions.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.reducers.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.service.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo-list.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\articles\article.model.ts" />
+    <TypeScriptCompile Include="src\app\articles\index.ts" />
+    <TypeScriptCompile Include="src\app\articles\articles-container.component.ts" />
+    <TypeScriptCompile Include="src\app\articles\article.actions.ts" />
+    <TypeScriptCompile Include="src\app\articles\article.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\articles\article.reducers.ts" />
+    <TypeScriptCompile Include="src\app\articles\article.component.ts" />
+    <TypeScriptCompile Include="src\app\articles\article.service.ts" />
+    <TypeScriptCompile Include="src\app\articles\article-list.component.ts" />
+    <TypeScriptCompile Include="src\app\articles\article-editor.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
