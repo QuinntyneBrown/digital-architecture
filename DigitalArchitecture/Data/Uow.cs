@@ -26,7 +26,7 @@ namespace DigitalArchitecture.Data
             RepositoryProvider = repositoryProvider;
         }
 
-        public IRepository<Photo> Photos { get { return GetStandardRepo<Photo>(); } }
+        public IRepository<DigitalAsset> DigitalAssets { get { return GetStandardRepo<DigitalAsset>(); } }
         public IRepository<App> Apps { get { return GetStandardRepo<App>(); } }
         public IRepository<Category> Categories { get { return GetStandardRepo<Category>(); } }
         public IRepository<UI> UIs { get { return GetStandardRepo<UI>(); } }

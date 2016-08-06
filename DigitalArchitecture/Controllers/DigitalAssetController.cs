@@ -22,43 +22,43 @@ using static System.Drawing.Imaging.ImageFormat;
 namespace DigitalArchitecture.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/photo")]
-    public class PhotoController : ApiController
+    [RoutePrefix("api/digitalasset")]
+    public class DigitalAssetController : ApiController
     {
-        public PhotoController(ICacheProvider cacheProvider, IPhotoService photoService, IUow uow, ITraceService traceService)
+        public DigitalAssetController(ICacheProvider cacheProvider, IDigialAssetService digitalAssetService, IUow uow, ITraceService traceService)
         {
-            _photoService = photoService;
+            _digitalAssetService = digitalAssetService;
             _uow = uow;
-            _repository = uow.Photos;
+            _repository = uow.DigitalAssets;
             _cache = cacheProvider.GetCache();
             _traceService = traceService;
         }
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(PhotoAddOrUpdateResponseDto))]
-        public IHttpActionResult Add(PhotoAddOrUpdateRequestDto dto) { return Ok(_photoService.AddOrUpdate(dto)); }
+        [ResponseType(typeof(DigitalAddOrUpdateResponseDto))]
+        public IHttpActionResult Add(DigitalAssetAddOrUpdateRequestDto dto) { return Ok(_digitalAssetService.AddOrUpdate(dto)); }
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(PhotoAddOrUpdateResponseDto))]
-        public IHttpActionResult Update(PhotoAddOrUpdateRequestDto dto) { return Ok(_photoService.AddOrUpdate(dto)); }
+        [ResponseType(typeof(DigitalAddOrUpdateResponseDto))]
+        public IHttpActionResult Update(DigitalAssetAddOrUpdateRequestDto dto) { return Ok(_digitalAssetService.AddOrUpdate(dto)); }
 
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(ICollection<PhotoDto>))]
-        public IHttpActionResult Get() { return Ok(_photoService.Get()); }
+        [ResponseType(typeof(ICollection<DigitalAssetDto>))]
+        public IHttpActionResult Get() { return Ok(_digitalAssetService.Get()); }
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(PhotoDto))]
-        public IHttpActionResult GetById(int id) { return Ok(_photoService.GetById(id)); }
+        [ResponseType(typeof(DigitalAssetDto))]
+        public IHttpActionResult GetById(int id) { return Ok(_digitalAssetService.GetById(id)); }
 
         [Route("remove")]
         [HttpDelete]
         [ResponseType(typeof(int))]
-        public IHttpActionResult Remove(int id) { return Ok(_photoService.Remove(id)); }
+        public IHttpActionResult Remove(int id) { return Ok(_digitalAssetService.Remove(id)); }
 
         [AllowAnonymous]
         [Route("upload")]
@@ -66,7 +66,7 @@ namespace DigitalArchitecture.Controllers
         public async Task<HttpResponseMessage> Upload(HttpRequestMessage request)
         {
 
-            var photos = new List<Photo>();
+            var photos = new List<DigitalAsset>();
             try
             {
                 if (!Request.Content.IsMimeMultipartContent("form-data"))
@@ -85,7 +85,7 @@ namespace DigitalArchitecture.Controllers
                         .Replace("&", "and")).Name;
                     Stream stream = await file.ReadAsStreamAsync();
                     var bytes = StreamHelper.ReadToEnd(stream);
-                    var photo = new Photo();
+                    var photo = new DigitalAsset();
                     photo.FileName = filename;
                     photo.Bytes = bytes;
                     photo.ContentType = System.Convert.ToString(file.Headers.ContentType);
@@ -100,7 +100,7 @@ namespace DigitalArchitecture.Controllers
                 var e = exception;
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, new PhotoUploadResponseDto(photos));
+            return Request.CreateResponse(HttpStatusCode.OK, new DigitalAssetUploadResponseDto(photos));
         }
 
         [Route("serve")]
@@ -109,7 +109,7 @@ namespace DigitalArchitecture.Controllers
         [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Serve([FromUri]Guid uniqueId, int? height = null)
         {
-            Photo photo = _cache.FromCacheOrService(() => _repository.GetAll().FirstOrDefault(x => x.UniqueId == uniqueId), uniqueId.ToString());
+            DigitalAsset photo = _cache.FromCacheOrService(() => _repository.GetAll().FirstOrDefault(x => x.UniqueId == uniqueId), uniqueId.ToString());
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
             if (photo == null)
                 return result;
@@ -126,9 +126,9 @@ namespace DigitalArchitecture.Controllers
             return result;
         }
 
-        protected readonly IPhotoService _photoService;
+        protected readonly IDigialAssetService _digitalAssetService;
         protected readonly ITraceService _traceService;
-        protected readonly IRepository<Photo> _repository;
+        protected readonly IRepository<DigitalAsset> _repository;
         protected readonly IUow _uow;
         protected readonly ICache _cache;
 

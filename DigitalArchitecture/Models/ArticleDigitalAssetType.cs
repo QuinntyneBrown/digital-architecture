@@ -1,6 +1,6 @@
 ﻿namespace DigitalArchitecture.Models
 {
-    public enum ArticleImageType
+    public enum ArticleDigitalAssetType
     {
         Thumbnail = 0,
         Hero

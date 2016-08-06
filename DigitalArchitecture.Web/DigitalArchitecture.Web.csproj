@@ -384,6 +384,8 @@
     <Folder Include="src\assets\scss\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\app.constants.ts" />
+    <TypeScriptCompile Include="src\app\app.reducers.ts" />
     <TypeScriptCompile Include="src\app\articles\articles.routes.ts" />
     <TypeScriptCompile Include="src\app\content-aggregation\action-creators\app.action-creator.ts" />
     <TypeScriptCompile Include="src\app\content-aggregation\action-creators\index.ts" />
@@ -424,6 +426,7 @@
     <TypeScriptCompile Include="src\app\pages\index.ts" />
     <TypeScriptCompile Include="src\app\pages\pages.routes.ts" />
     <TypeScriptCompile Include="src\app\photos\photos.routes.ts" />
+    <TypeScriptCompile Include="src\app\routing\app-guard.ts" />
     <TypeScriptCompile Include="src\app\shared\admin-header\index.ts" />
     <TypeScriptCompile Include="src\app\shared\app-footer\index.ts" />
     <TypeScriptCompile Include="src\app\shared\app-header\index.ts" />

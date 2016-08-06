@@ -15,7 +15,7 @@ namespace DigitalArchitecture.Models
         public string Headline { get; set; }
         public string AlternativeHeadline { get; set; }
         public string Url { get; set; }
-        public ICollection<ArticleImage> Images { get; set; } = new HashSet<ArticleImage>();
+        public ICollection<ArticleDigitalAsset> Images { get; set; } = new HashSet<ArticleDigitalAsset>();
         public ICollection<ArticleTag> Tags { get; set; } = new HashSet<ArticleTag>();
         public ICollection<ArticleCategory> Categories { get; set; } = new HashSet<ArticleCategory>();
         public Author Author { get; set; }

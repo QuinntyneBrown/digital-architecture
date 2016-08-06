@@ -1,14 +1,14 @@
 namespace DigitalArchitecture.Dtos
 {
-    public class PhotoDto
+    public class DigitalAssetDto
     {
-        public PhotoDto(DigitalArchitecture.Models.Photo entity)
+        public DigitalAssetDto(DigitalArchitecture.Models.DigitalAsset entity)
         {
             this.Id = entity.Id;
             this.Name = entity.Name;
         }
 
-        public PhotoDto()
+        public DigitalAssetDto()
         {
             
         }

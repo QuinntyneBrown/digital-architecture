@@ -26,7 +26,7 @@ namespace DigitalArchitecture
             container.RegisterType<IAuthorService, AuthorService>();
             container.RegisterType<ICategoryService, CategoryService>();
             container.RegisterType<IGalleryService, GalleryService>();
-            container.RegisterType<IPhotoService, PhotoService>();
+            container.RegisterType<IDigialAssetService, DigitalAssetService>();
             container.RegisterType<IPropertyService, PropertyService>();
             container.RegisterType<IRoleService, RoleService>();
             container.RegisterType<ISectionService, SectionService>();
